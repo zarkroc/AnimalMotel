@@ -58,16 +58,30 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Compile Include="AnimalLibrary\Animal.cs" />
+    <Compile Include="AnimalLibrary\AnimalManager.cs" />
+    <Compile Include="AnimalLibrary\Bird\BirdFactory.cs" />
+    <Compile Include="AnimalLibrary\Bird\BirdSpecies.cs" />
+    <Compile Include="AnimalLibrary\Mammal\MammalFactory.cs" />
+    <Compile Include="AnimalLibrary\Mammal\MammalSpecies.cs" />
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="AnimalLibrary\Bird\Bird.cs" />
+    <Compile Include="AnimalLibrary\Mammal\Cat.cs" />
+    <Compile Include="AnimalLibrary\Category.cs" />
+    <Compile Include="AnimalLibrary\Bird\Falcon.cs" />
+    <Compile Include="AnimalLibrary\Mammal\Dog.cs" />
+    <Compile Include="AnimalLibrary\Gender.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnimalLibrary\Mammal\Mammal.cs" />
+    <Compile Include="AnimalLibrary\Bird\Parrot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

@@ -5,8 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimalMotel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Animal Motel" Height="508.867" Width="708.967">
     <Grid>
-        
+        <GroupBox x:Name="grpSpecification" Header="GroupBox" HorizontalAlignment="Left" Height="104" Margin="13,136,0,0" VerticalAlignment="Top" Width="332"/>
+        <Label x:Name="lblInputName" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="68,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblInputAge" Content="Age" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtAge" HorizontalAlignment="Left" Height="23" Margin="68,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblInputGender" Content="Gender" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cboxGender" HorizontalAlignment="Left" Margin="68,80,0,0" VerticalAlignment="Top" Width="120"/>
+        <ListBox x:Name="lstCategory" HorizontalAlignment="Left" Height="100" Margin="219,26,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="lstCategory_SelectionChanged"/>
+        <Label x:Name="lblCategoryList" Content="Category" HorizontalAlignment="Left" Margin="219,0,0,0" VerticalAlignment="Top"/>
+        <ListBox x:Name="lstAnimals" HorizontalAlignment="Left" Height="189" Margin="350,26,0,0" VerticalAlignment="Top" Width="146" SelectionChanged="lstAnimals_SelectionChanged"/>
+        <Label x:Name="lblAnimalSpecies" Content="Species" HorizontalAlignment="Left" Margin="350,0,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblCategorySpec" Content="Placeholder" HorizontalAlignment="Left" Margin="13,168,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblSpeciesSpec" Content="Placeholder" HorizontalAlignment="Left" Margin="13,202,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtCategorySpec" HorizontalAlignment="Left" Height="23" Margin="162,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177"/>
+        <TextBox x:Name="txtSpeciesSpec" HorizontalAlignment="Left" Height="23" Margin="162,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177"/>
+        <ListBox x:Name="lstRegisteredAnimals" HorizontalAlignment="Left" Height="166" Margin="10,273,0,0" VerticalAlignment="Top" Width="681" FontFamily="Courier New" />
+        <Label x:Name="lblId" Content="ID" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblName" Content="Name" HorizontalAlignment="Left" Margin="43,245,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lblAge" Content="Age" HorizontalAlignment="Left" Margin="177,247,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.47,0.255"/>
+        <Label x:Name="lblSpecialCharcteristics" Content="Special Charcteristics" HorizontalAlignment="Left" Margin="570,247,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.55,0.428"/>
+        <Button x:Name="btnAddAnimal" Content="Add this new animal" HorizontalAlignment="Left" Margin="350,220,0,0" VerticalAlignment="Top" Width="146" RenderTransformOrigin="-0.929,0.785" Click="btnAddAnimal_Click"/>
+        <Button x:Name="btnAddPicture" Content="Load animal photo" HorizontalAlignment="Left" Margin="522,26,0,0" VerticalAlignment="Top" Width="158" RenderTransformOrigin="0.511,2.453" Click="btnAddPicture_Click"/>
+        <Image x:Name="picAnimalImage" HorizontalAlignment="Left" Height="136" Margin="522,76,0,0" VerticalAlignment="Top" Width="158"/>
+        <CheckBox x:Name="chbListAllAnimals" Content="List all animals" HorizontalAlignment="Left" Margin="522,220,0,0" VerticalAlignment="Top" Width="134"/>
+        <Label x:Name="lblGender" Content="Gender" HorizontalAlignment="Left" Margin="320,247,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnRemove" Content="Remove item" Margin="588,448,10,0" Click="btnRemove_Click"/>
+        <Label x:Name="lblCategory" Content="Category" HorizontalAlignment="Left" Margin="239,247,0,0" VerticalAlignment="Top"/>
+
     </Grid>
 </Window>
