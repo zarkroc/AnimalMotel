@@ -47,20 +47,81 @@ namespace AnimalMotel
                         animal = BirdFactory.CreateBird((BirdSpecies)lstAnimals.SelectedValue);
                         break;
                 }
+                if (! IsNumber(txtAge.Text))
+                {
+                    MessageBox.Show("Please input only numbers in age");
+                    return;
+                }
+                if (! IsNumber(txtCategorySpec.Text))
+                {
+                    MessageBox.Show("Please input only numbers in category information");
+                    return;
+                }
                 if (int.TryParse(txtAge.Text, out int age))
                 {
-                    animal.Age = age;
+                    if (age >= 0)
+                    {
+                        animal.Age = age;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Age is negative");
+                        return;
+
+                    }
                 }
-                
-                animal.Name = txtName.Text;
+
+                if (int.TryParse(txtCategorySpec.Text, out int result))
+                {
+                    if (result >= 0)
+                    {
+                        animal.AddCategoryInformation(txtCategorySpec.Text);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Category information is negative");
+                        return;
+                    }
+
+                }
+
+                if (IsNumber(txtName.Text))
+                {
+                    MessageBox.Show("Please only input letters in the name");
+                    return;                    
+                }
+                else
+                {
+                    animal.Name = txtName.Text;
+                }
+
+                if (IsNumber(txtSpeciesSpec.Text))
+                {
+                    MessageBox.Show("Please only input letters in the species information.");
+                    return;
+                }
+                else
+                {
+                    animal.AddSpeciesInformation(txtSpeciesSpec.Text);
+                }
+
                 animal.Gender = (Gender) cboxGender.SelectedValue;
-                animal.AddCategoryInformation(txtCategorySpec.Text);
-                animal.AddSpeciesInformation(txtSpeciesSpec.Text);
                 animalManager.AddAnimal(animal);
                 ClearInput();
                 UpdateGUI();
             }
         }
+
+        /// <summary>
+        /// Returns true if all the chars in the string is a letter or false if they are numbers.
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        private bool IsNumber(string s)
+        {
+            return s.Any() && s.All(c => Char.IsDigit(c));
+        }
+
         /// <summary>
         /// Add a picture to the GUI hopefully of an Animal :)
         /// </summary>
@@ -121,9 +182,10 @@ namespace AnimalMotel
         private void UpdateGUI()
         {
             lstRegisteredAnimals.Items.Clear();
-            foreach (Animal animal in animalManager.ListOfAnimals)
+
+            for (int i=0; i< animalManager.Count; i++)
             {
-                lstRegisteredAnimals.Items.Add(animal);
+                lstRegisteredAnimals.Items.Add(animalManager.GetAnimal(i));
             }
         }
 
