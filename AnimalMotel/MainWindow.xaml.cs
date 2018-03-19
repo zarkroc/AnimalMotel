@@ -137,7 +137,6 @@ namespace AnimalMotel
                 UpdateGUI();
             }
         }
-
         /// <summary>
         /// Returns true if all the chars in the string is a letter or false if they are numbers.
         /// </summary>
