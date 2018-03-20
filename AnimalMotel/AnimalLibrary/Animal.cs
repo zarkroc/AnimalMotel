@@ -5,7 +5,7 @@
 /// </summary>
 namespace AnimalMotel
 {
-    public abstract class Animal
+    public abstract class Animal : IAnimal
     {
         private string name;
         private int id;
@@ -113,6 +113,7 @@ namespace AnimalMotel
         /// Method to return species information
         /// </summary>
         public abstract string SpeciesInformation { get; }
+        public abstract int ID { get; set; }
 
         /// <summary>
         /// ToString method
@@ -123,5 +124,20 @@ namespace AnimalMotel
         {
             return string.Format("{0,-3} {1,-17} {2,-8} {3,-11} {4,-11} {5,-11} {6,-11}", id, name, age, category, gender, CategoryInformation, SpeciesInformation);
         }
+        /// <summary>
+        /// Return the eater type.
+        /// </summary>
+        /// <returns></returns>
+        public abstract EaterType GetEaterType();
+        /// <summary>
+        /// Return the food schedule
+        /// </summary>
+        /// <returns></returns>
+        public abstract FoodSchedule GetFoodSchedule();
+        /// <summary>
+        /// Return the specie of the animal
+        /// </summary>
+        /// <returns></returns>
+        public abstract string GetSpecies();
     }
 }
