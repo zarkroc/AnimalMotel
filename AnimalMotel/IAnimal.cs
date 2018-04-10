@@ -1,15 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿/// <summary>
+/// Interface for animals.
+/// This needs to be implemted by all animals.
+/// Author: Tomas Perers
+/// Date: 2018-04-10
+/// </summary>
 namespace AnimalMotel
 {
     public interface IAnimal
     {
         
-        int ID { get; set; }
+        int Id { get; set; }
         Gender Gender { get; set; }
         string Name { get; set; }
 

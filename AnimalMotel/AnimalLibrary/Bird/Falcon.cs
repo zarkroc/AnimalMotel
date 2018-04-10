@@ -1,13 +1,16 @@
 ﻿/// <summary>
 /// Author: Tomas Perers, ai2891
-/// Date : 2018-03-10
-/// Project Animal motel v1
+/// Date : 2018-04-10
+/// Project Animal motel v2
+/// Updated 2018-04-10
 /// </summary>
 namespace AnimalMotel
 {
     public class Falcon : Bird
     {
         private string favouriteFood;
+        private EaterType eaterType = EaterType.Carnivore;
+        private FoodSchedule foodSchedule;
 
         /// <summary>
         /// Constructor that will set the species
@@ -15,6 +18,7 @@ namespace AnimalMotel
         public Falcon() : base()
         {
             birdSpecies = BirdSpecies.Falcon;
+            foodSchedule =  new FoodSchedule();
         }
         /// <summary>
         /// 
@@ -29,12 +33,17 @@ namespace AnimalMotel
         public Falcon(int id, string name, int age, Category category, Gender gender, int flyingSpeed, string favouriteFood) : base(id, name, age, category, gender, flyingSpeed)
         {
             this.favouriteFood = favouriteFood;
+            birdSpecies = BirdSpecies.Falcon;
+            foodSchedule = new FoodSchedule();
         }
 
         /// <summary>
         /// returns or set the favourite food of the animal.
         /// </summary>
-        public string FavouriteFood { get => favouriteFood; set => favouriteFood = value; }
+        public string FavouriteFood {
+            get => favouriteFood;
+            set => favouriteFood = value;
+        }
 
         /// <summary>
         /// Add species information.
@@ -43,6 +52,41 @@ namespace AnimalMotel
         public override void AddSpeciesInformation(string speciesInformation)
         {
             favouriteFood = speciesInformation;
+        }
+
+        /// <summary>
+        /// Returns the food schedule
+        /// </summary>
+        /// <returns>FoodSchedule</returns>
+        public override FoodSchedule GetFoodSchedule()
+        {
+            return foodSchedule;
+        }
+
+        /// <summary>
+        /// Return the specie
+        /// </summary>
+        /// <returns>string</returns>
+        public override string GetSpecies()
+        {
+            return "Falcon";
+        }
+
+        /// <summary>
+        /// Returns the eatertype
+        /// </summary>
+        /// <returns>EaterType</returns>
+        public override EaterType GetEaterType()
+        {
+            return eaterType;
+        }
+
+        /// <summary>
+        /// Creates the food schedule
+        /// </summary>
+        public override void CreateFoodSchedule()
+        {
+            foodSchedule.AddFoodScheduleItem(Name + " likes to eat " +favouriteFood);
         }
 
         /// <summary>

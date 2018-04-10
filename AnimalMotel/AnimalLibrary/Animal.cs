@@ -2,6 +2,7 @@
 /// Author: Tomas Perers, ai2891
 /// Date : 2018-02-20
 /// Project Animal motel v1
+/// Updated 2018-04-10
 /// </summary>
 namespace AnimalMotel
 {
@@ -12,7 +13,7 @@ namespace AnimalMotel
         private int age;
         private Gender gender;
         private Category category;
-        
+
         /// <summary>
         /// Set and get the name of the animal
         /// </summary>
@@ -113,7 +114,8 @@ namespace AnimalMotel
         /// Method to return species information
         /// </summary>
         public abstract string SpeciesInformation { get; }
-        public abstract int ID { get; set; }
+        public abstract EaterType GetEaterType();
+        
 
         /// <summary>
         /// ToString method
@@ -124,11 +126,8 @@ namespace AnimalMotel
         {
             return string.Format("{0,-3} {1,-17} {2,-8} {3,-11} {4,-11} {5,-11} {6,-11}", id, name, age, category, gender, CategoryInformation, SpeciesInformation);
         }
-        /// <summary>
-        /// Return the eater type.
-        /// </summary>
-        /// <returns></returns>
-        public abstract EaterType GetEaterType();
+
+        public abstract void CreateFoodSchedule();
         /// <summary>
         /// Return the food schedule
         /// </summary>

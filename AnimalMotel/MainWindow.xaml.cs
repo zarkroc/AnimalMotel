@@ -104,8 +104,14 @@ namespace AnimalMotel
                 {
                     animal.AddSpeciesInformation(txtSpeciesSpec.Text);
                 }
+                if (cboxGender.SelectedIndex == -1)
+                {
+                    MessageBox.Show("Please choose a gender");
+                    return;
+                }
 
                 animal.Gender = (Gender) cboxGender.SelectedValue;
+                animal.CreateFoodSchedule();
                 animalManager.AddAnimal(animal);
                 ClearInput();
                 UpdateGUI();
@@ -293,6 +299,27 @@ namespace AnimalMotel
             {
                 animalManager.RemoveAnimal(lstRegisteredAnimals.SelectedIndex);
                 UpdateGUI();
+            }
+        }
+
+        private void lstRegisteredAnimals_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = lstRegisteredAnimals.SelectedIndex;
+            if (index > -1)
+            {
+                Animal animal = animalManager.GetAnimal(index);
+                txtbEaterType.Text = animal.GetEaterType().ToString();
+                txtbFeedingSchedule.Text = animal.GetFoodSchedule().ToString();
+                txtName.Text = animal.Name;
+                txtAge.Text = animal.Age.ToString();
+                cboxGender.SelectedValue = animal.Gender;
+                lstCategory.SelectedValue = animal.Category;
+                lstAnimals.SelectedValue = animal.GetSpecies();
+                lstAnimals_SelectionChanged(null, null);
+                lstCategory_SelectionChanged(null, null);
+                txtCategorySpec.Text = animal.CategoryInformation;
+                txtSpeciesSpec.Text = animal.SpeciesInformation;
+                
             }
         }
     }

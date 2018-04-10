@@ -2,12 +2,15 @@
 /// Author: Tomas Perers, ai2891
 /// Date : 2018-02-25
 /// Project Animal motel v1
+/// Updated 2018-04-10
 /// </summary>
 namespace AnimalMotel
 {
     public class Dog : Mammal
     {
         private string favouriteFood;
+        private EaterType eaterType = EaterType.Omnivorous;
+        private FoodSchedule foodSchedule;
 
         public string FavouriteFood { get => favouriteFood; set => favouriteFood = value; }
 
@@ -17,6 +20,7 @@ namespace AnimalMotel
         public Dog() : base()
         {
             mammalSpecies = MammalSpecies.Dog;
+            foodSchedule = new FoodSchedule();
         }
         /// <summary>
         /// 
@@ -32,6 +36,7 @@ namespace AnimalMotel
         {
             this.favouriteFood = favouriteFood;
             mammalSpecies = MammalSpecies.Dog;
+            foodSchedule = new FoodSchedule();
         }
         
         /// <summary>
@@ -41,6 +46,41 @@ namespace AnimalMotel
         public override void AddSpeciesInformation(string speciesInformation)
         {
             favouriteFood = speciesInformation;
+        }
+
+        /// <summary>
+        /// Returns the food schedule
+        /// </summary>
+        /// <returns>FoodSchedule</returns>
+        public override FoodSchedule GetFoodSchedule()
+        {
+            return foodSchedule;
+        }
+
+        /// <summary>
+        /// Return the specie
+        /// </summary>
+        /// <returns>string</returns>
+        public override string GetSpecies()
+        {
+            return "Dog";
+        }
+
+        /// <summary>
+        /// Returns the eatertype
+        /// </summary>
+        /// <returns>EaterType</returns>
+        public override EaterType GetEaterType()
+        {
+            return eaterType;
+        }
+
+        /// <summary>
+        /// Creates the food schedule
+        /// </summary>
+        public override void CreateFoodSchedule()
+        {
+            foodSchedule.AddFoodScheduleItem(Name + " likes to eat all kinds of food");
         }
 
         /// <summary>

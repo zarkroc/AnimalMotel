@@ -20,7 +20,7 @@
         <Label x:Name="lblCategoryList" Content="Category" HorizontalAlignment="Left" Margin="219,0,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="lstAnimals" HorizontalAlignment="Left" Height="189" Margin="350,26,0,0" VerticalAlignment="Top" Width="146" SelectionChanged="lstAnimals_SelectionChanged"/>
         <Label x:Name="lblAnimalSpecies" Content="Species" HorizontalAlignment="Left" Margin="350,0,0,0" VerticalAlignment="Top"/>
-        <ListBox x:Name="lstRegisteredAnimals" HorizontalAlignment="Left" Height="201" Margin="10,273,0,0" VerticalAlignment="Top" Width="1013" FontFamily="Courier New" />
+        <ListBox x:Name="lstRegisteredAnimals" HorizontalAlignment="Left" Height="201" Margin="10,273,0,0" VerticalAlignment="Top" Width="1013" FontFamily="Courier New" SelectionChanged="lstRegisteredAnimals_SelectionChanged" />
         <Label x:Name="lblId" Content="ID" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblName" Content="Name" HorizontalAlignment="Left" Margin="43,245,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblAge" Content="Age" HorizontalAlignment="Left" Margin="177,247,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.47,0.255"/>

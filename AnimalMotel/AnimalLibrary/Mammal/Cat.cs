@@ -2,12 +2,15 @@
 /// Author: Tomas Perers, ai2891
 /// Date : 2018-03-10
 /// Project Animal motel v1
+/// Updated 2018-04-10
 /// </summary>
 namespace AnimalMotel
 {
     public class Cat : Mammal
     {
         private string socialBehaviour;
+        private EaterType eaterType = EaterType.Carnivore;
+        private FoodSchedule foodSchedule;
 
         public string SocialBehaviour { get => socialBehaviour; set => socialBehaviour = value; }
 
@@ -17,6 +20,7 @@ namespace AnimalMotel
         public Cat() : base()
         {
             mammalSpecies = MammalSpecies.Cat;
+            foodSchedule = new FoodSchedule();
         }
         /// <summary>
         /// 
@@ -32,6 +36,7 @@ namespace AnimalMotel
         {
             this.socialBehaviour = socialBehaviour;
             mammalSpecies = MammalSpecies.Cat;
+            foodSchedule = new FoodSchedule();
         }
 
         /// <summary>
@@ -42,6 +47,42 @@ namespace AnimalMotel
         {
             socialBehaviour = speciesInformation;
         }
+
+        /// <summary>
+        /// Returns the food schedule
+        /// </summary>
+        /// <returns>FoodSchedule</returns>
+        public override FoodSchedule GetFoodSchedule()
+        {
+            return foodSchedule;
+        }
+
+        /// <summary>
+        /// Return the specie
+        /// </summary>
+        /// <returns>string</returns>
+        public override string GetSpecies()
+        {
+            return "Cat";
+        }
+
+        /// <summary>
+        /// Returns the eatertype
+        /// </summary>
+        /// <returns>EaterType</returns>
+        public override EaterType GetEaterType()
+        {
+            return eaterType;
+        }
+
+        /// <summary>
+        /// Creates the food schedule
+        /// </summary>
+        public override void CreateFoodSchedule()
+        {
+            foodSchedule.AddFoodScheduleItem(Name + " likes to eat mice");
+        }
+
         /// <summary>
         /// Returns the species information.
         /// </summary>
