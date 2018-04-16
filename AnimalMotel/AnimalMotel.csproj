@@ -54,6 +54,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="FoodForm.xaml.cs">
+      <DependentUpon>FoodForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListManager.cs" />
+    <Compile Include="Recepie.cs" />
+    <Compile Include="RecepieManager.cs" />
+    <Compile Include="Staff.cs" />
+    <Compile Include="StaffForm.xaml.cs">
+      <DependentUpon>StaffForm.xaml</DependentUpon>
+    </Compile>
+    <Page Include="FoodForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -77,10 +91,15 @@
     <Compile Include="EaterType.cs" />
     <Compile Include="FoodSchedule.cs" />
     <Compile Include="IAnimal.cs" />
+    <Compile Include="IListManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="StaffForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AnimalLibrary\Mammal\Mammal.cs" />
