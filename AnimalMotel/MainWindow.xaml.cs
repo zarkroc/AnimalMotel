@@ -306,7 +306,6 @@ namespace AnimalMotel
             if (chbListAllAnimals.IsChecked == true)
             {
                 lstCategory.Visibility = Visibility.Hidden;
-                grpSpecification.Visibility = Visibility.Visible;
                 grpSpecification.Header = lstCategory.SelectedValue + " specification";
                 txtCategorySpec.Visibility = Visibility.Visible;
                 lblCategorySpec.Visibility = Visibility.Visible;
