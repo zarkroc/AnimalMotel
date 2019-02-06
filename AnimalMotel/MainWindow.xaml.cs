@@ -6,7 +6,8 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 /// <summary>
 /// Author: Tomas Perers
-/// Date : 2018-03-19
+/// Date : 2019-02-06
+/// Updated a bit for the second attempt at the course.
 /// </summary>
 namespace AnimalMotel
 {
