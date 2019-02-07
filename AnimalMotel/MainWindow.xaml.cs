@@ -155,6 +155,14 @@ namespace AnimalMotel
             ClearInput();
             lstCategory.ItemsSource = Enum.GetValues(typeof(Category)).Cast<Category>();
             cboxGender.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
+            if(lstAnimals.ItemsSource == null)
+            {
+                lstAnimals.Items.Clear();
+            }
+            else
+            {
+                lstAnimals.ItemsSource = null;
+            }
             lstRegisteredAnimals.Items.Clear();
         }
 
