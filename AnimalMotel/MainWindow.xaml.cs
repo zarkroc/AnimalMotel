@@ -317,8 +317,17 @@ namespace AnimalMotel
                 grpSpecification.Header = lstCategory.SelectedValue + " specification";
                 txtCategorySpec.Visibility = Visibility.Visible;
                 lblCategorySpec.Visibility = Visibility.Visible;
+                if(lstAnimals.ItemsSource == null)
+                {
+                    lstAnimals.Items.Clear();
+                }
+                else
+                {
+                    lstAnimals.ItemsSource = null;
+                }
 
-                lstAnimals.Items.Clear();
+
+                
                 foreach (var item in Enum.GetValues(typeof(BirdSpecies)).Cast<BirdSpecies>())
                 {
                     lstAnimals.Items.Add(item);
