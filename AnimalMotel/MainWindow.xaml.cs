@@ -247,7 +247,11 @@ namespace AnimalMotel
             grpSpecification.Header = lstCategory.SelectedValue + " specification";
             txtCategorySpec.Visibility = Visibility.Visible;
             lblCategorySpec.Visibility = Visibility.Visible;
-            lstAnimals.Items.Clear();
+            if(lstAnimals.ItemsSource == null)
+            {
+                lstAnimals.Items.Clear();
+            }
+            
 
             switch (lstCategory.SelectedValue)
             {
@@ -317,8 +321,15 @@ namespace AnimalMotel
                 grpSpecification.Header = lstCategory.SelectedValue + " specification";
                 txtCategorySpec.Visibility = Visibility.Visible;
                 lblCategorySpec.Visibility = Visibility.Visible;
-
-                lstAnimals.Items.Clear();
+                if(lstAnimals.ItemsSource == null)
+                {
+                    lstAnimals.Items.Clear();
+                }
+                else
+                {
+                    lstAnimals.ItemsSource = null;
+                }
+                
                 foreach (var item in Enum.GetValues(typeof(BirdSpecies)).Cast<BirdSpecies>())
                 {
                     lstAnimals.Items.Add(item);
