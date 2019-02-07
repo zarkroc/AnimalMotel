@@ -3,7 +3,8 @@ using System.Linq;
 
 /// <summary>
 /// Author: Tomas Perers, ai2891
-/// Date : 2018-02-20
+/// Date : 2019-02-06
+/// Updated a bit for the second attempt at the course.
 /// Project Animal motel v1
 /// </summary>
 
@@ -29,18 +30,13 @@ namespace AnimalMotel
         {
             get
             {
-                if (ListOfAnimals != null)
-                    return ListOfAnimals.Count;
+                if (listOfAnimals != null)
+                    return listOfAnimals.Count;
                 else
                     return 0;
             }
         }
-
-        /// <summary>
-        /// Returns the list of animals.
-        /// </summary>
-        public List<Animal> ListOfAnimals { get => listOfAnimals;}
-
+        
         /// <summary>
         /// Returns the animal at index
         /// </summary>
@@ -64,7 +60,7 @@ namespace AnimalMotel
 
             if (Count > 0)
             {
-                Animal lastAnimal = ListOfAnimals.Last();
+                Animal lastAnimal = listOfAnimals.Last();
                 return lastAnimal.Id + 1;
             }
             else
@@ -78,7 +74,7 @@ namespace AnimalMotel
         public void AddAnimal(Animal animal)
         {
             animal.Id = CreateNewID();
-            ListOfAnimals.Add(animal);
+            listOfAnimals.Add(animal);
         }
 
 
