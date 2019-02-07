@@ -247,6 +247,7 @@ namespace AnimalMotel
             grpSpecification.Header = lstCategory.SelectedValue + " specification";
             txtCategorySpec.Visibility = Visibility.Visible;
             lblCategorySpec.Visibility = Visibility.Visible;
+            lstAnimals.Items.Clear();
 
             switch (lstCategory.SelectedValue)
             {
