@@ -43,7 +43,7 @@ namespace AnimalMotel
         /// Overrides the add category information.
         /// </summary>
         /// <param name="categoryInformation"></param>
-        public override void AddCategoryInformation(string categoryInformation)
+        internal void AddCategoryInformation(string categoryInformation)
         {
             int.TryParse(categoryInformation, out flyingSpeed);
         }
@@ -51,6 +51,9 @@ namespace AnimalMotel
         /// <summary>
         /// Returns a formatted version of the category information.
         /// </summary>
-        public override string CategoryInformation => "Fying speed: " + FlyingSpeed.ToString();
+        public override string ToString()
+        {
+            return base.ToString() + " Fying speed: " + FlyingSpeed.ToString();
+        }
     }
 }

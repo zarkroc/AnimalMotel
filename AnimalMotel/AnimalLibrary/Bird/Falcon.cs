@@ -18,7 +18,7 @@ namespace AnimalMotel
         public Falcon() : base()
         {
             birdSpecies = BirdSpecies.Falcon;
-            foodSchedule =  new FoodSchedule();
+            foodSchedule = new FoodSchedule();
         }
         /// <summary>
         /// 
@@ -49,7 +49,7 @@ namespace AnimalMotel
         /// Add species information.
         /// </summary>
         /// <param name="speciesInformation"></param>
-        public override void AddSpeciesInformation(string speciesInformation)
+        internal void AddSpeciesInformation(string speciesInformation)
         {
             favouriteFood = speciesInformation;
         }
@@ -58,7 +58,7 @@ namespace AnimalMotel
         /// Returns the food schedule
         /// </summary>
         /// <returns>FoodSchedule</returns>
-        public override FoodSchedule GetFoodSchedule()
+        public FoodSchedule GetFoodSchedule()
         {
             return foodSchedule;
         }
@@ -67,7 +67,7 @@ namespace AnimalMotel
         /// Return the specie
         /// </summary>
         /// <returns>string</returns>
-        public override string GetSpecies()
+        public string GetSpecies()
         {
             return "Falcon";
         }
@@ -76,7 +76,7 @@ namespace AnimalMotel
         /// Returns the eatertype
         /// </summary>
         /// <returns>EaterType</returns>
-        public override EaterType GetEaterType()
+        public EaterType GetEaterType()
         {
             return eaterType;
         }
@@ -84,14 +84,16 @@ namespace AnimalMotel
         /// <summary>
         /// Creates the food schedule
         /// </summary>
-        public override void CreateFoodSchedule()
+        internal void CreateFoodSchedule()
         {
-            foodSchedule.AddFoodScheduleItem(Name + " likes to eat " +favouriteFood);
+            foodSchedule.AddFoodScheduleItem(Name + " likes to eat " + favouriteFood);
         }
 
         /// <summary>
         /// Returns the species information.
         /// </summary>
-        public override string SpeciesInformation => "Favourite food: " + favouriteFood;
+        public override string ToString() {
+            return base.ToString() + " Favourite food: " + favouriteFood;
+        }
     }
 }

@@ -12,9 +12,5 @@ namespace AnimalMotel
         int Id { get; set; }
         Gender Gender { get; set; }
         string Name { get; set; }
-
-        EaterType GetEaterType();
-        FoodSchedule GetFoodSchedule();
-        string GetSpecies();
     }
 }
