@@ -6,14 +6,16 @@
 /// </summary>
 namespace AnimalMotel
 {
-    public abstract class Animal
+    public abstract class Animal : IAnimal
     {
         private string name;
         private int id;
         private int age;
         private Gender gender;
         private Category category;
-        
+        private EaterType eaterType = EaterType.Carnivore;
+        private FoodSchedule foodSchedule;
+
         /// <summary>
         /// Set and get the name of the animal
         /// </summary>
@@ -103,6 +105,32 @@ namespace AnimalMotel
         public override string ToString()
         {
             return string.Format("{0,-3} {1,-17} {2,-8} {3,-11} {4,-11}", id, name, age, category, gender);
+        }
+
+        /// <summary>
+        /// Returns the eatertype
+        /// </summary>
+        /// <returns>EaterType</returns
+        public EaterType GetEaterType()
+        {
+            return eaterType;
+        }
+
+        /// <summary>
+        /// Returns the food schedule
+        /// </summary>
+        /// <returns>FoodSchedule</returns>
+        public FoodSchedule GetFoodSchedule()
+        {
+            return foodSchedule;
+        }
+
+        /// <summary>
+        /// Returns the species information.
+        /// </summary>
+        public string GetSpecies()
+        {
+            return this.GetType().ToString();
         }
     }
 }

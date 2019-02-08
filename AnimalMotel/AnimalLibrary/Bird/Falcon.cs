@@ -8,6 +8,10 @@ namespace AnimalMotel
 {
     public class Falcon : Bird
     {
+        private string favouriteFood;
+        private EaterType eaterType = EaterType.Carnivore;
+        private FoodSchedule foodSchedule;
+
 
         /// <summary>
         /// Constructor that will set the species
@@ -15,6 +19,7 @@ namespace AnimalMotel
         public Falcon() : base()
         {
             birdSpecies = BirdSpecies.Falcon;
+            foodSchedule.AddFoodScheduleItem(Name + " likes to eat " +favouriteFood);
         }
         /// <summary>
         /// 
@@ -29,6 +34,7 @@ namespace AnimalMotel
         public Falcon(int id, string name, int age, Category category, Gender gender, int flyingSpeed, string favouriteFood) : base(id, name, age, category, gender, flyingSpeed)
         {
             this.FavouriteFood = favouriteFood;
+            foodSchedule.AddFoodScheduleItem(Name + " likes to eat " + favouriteFood);
         }
 
         /// <summary>

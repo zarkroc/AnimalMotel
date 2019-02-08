@@ -9,6 +9,8 @@ namespace AnimalMotel
     public class Dog : Mammal
     {
         public string FavouriteFood { get; set; }
+        private EaterType eaterType = EaterType.Omnivorous;
+        private FoodSchedule foodSchedule;
 
         /// <summary>
         /// Constructor that will set the species
@@ -16,6 +18,8 @@ namespace AnimalMotel
         public Dog() : base()
         {
             mammalSpecies = MammalSpecies.Dog;
+            foodSchedule = new FoodSchedule();
+            foodSchedule.AddFoodScheduleItem(Name + " likes to eat all kinds of food");
         }
         /// <summary>
         /// 
@@ -31,6 +35,7 @@ namespace AnimalMotel
         {
             this.FavouriteFood = favouriteFood;
             mammalSpecies = MammalSpecies.Dog;
+            foodSchedule = new FoodSchedule();
         }
 
         /// <summary>

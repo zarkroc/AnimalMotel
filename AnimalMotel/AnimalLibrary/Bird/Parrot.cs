@@ -9,6 +9,8 @@ namespace AnimalMotel
     public class Parrot : Bird
     {
         public string TalkingDialect { get; set; }
+        private EaterType eaterType = EaterType.Carnivore;
+        private FoodSchedule foodSchedule;
 
         /// <summary>
         /// Constructor that will set the species
@@ -16,6 +18,8 @@ namespace AnimalMotel
         public Parrot() : base()
         {
             birdSpecies = BirdSpecies.Parrot;
+            foodSchedule = new FoodSchedule();
+            foodSchedule.AddFoodScheduleItem(Name + " likes to eat seeds");
         }
         /// <summary>
         /// 
@@ -30,6 +34,8 @@ namespace AnimalMotel
         public Parrot(int id, string name, int age, Category category, Gender gender, int flyingSpeed, string talkingDialect) : base(id, name, age, category, gender, flyingSpeed)
         {
             this.TalkingDialect = talkingDialect;
+            foodSchedule = new FoodSchedule();
+            foodSchedule.AddFoodScheduleItem(Name + " likes to eat seeds");
         }
         
         /// <summary>

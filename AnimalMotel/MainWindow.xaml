@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimalMotel"
         mc:Ignorable="d"
-        Title="Animal Motel" Height="508.867" Width="708.967">
+        Title="Animal Motel" Height="510.032" Width="1035.015">
     <Grid>
         <GroupBox x:Name="grpSpecification" Header="GroupBox" HorizontalAlignment="Left" Height="104" Margin="13,136,0,0" VerticalAlignment="Top" Width="332"/>
         <Label x:Name="lblInputName" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
@@ -22,7 +22,7 @@
         <Label x:Name="lblSpeciesSpec" Content="Placeholder" HorizontalAlignment="Left" Margin="13,202,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="txtCategorySpec" HorizontalAlignment="Left" Height="23" Margin="162,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177"/>
         <TextBox x:Name="txtSpeciesSpec" HorizontalAlignment="Left" Height="23" Margin="162,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177"/>
-        <ListBox x:Name="lstRegisteredAnimals" HorizontalAlignment="Left" Height="166" Margin="10,273,0,0" VerticalAlignment="Top" Width="681" FontFamily="Courier New" />
+        <ListBox x:Name="lstRegisteredAnimals" HorizontalAlignment="Left" Height="166" Margin="10,273,0,0" VerticalAlignment="Top" Width="1007" FontFamily="Courier New" />
         <Label x:Name="lblId" Content="ID" HorizontalAlignment="Left" Margin="10,247,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblName" Content="Name" HorizontalAlignment="Left" Margin="43,245,0,0" VerticalAlignment="Top"/>
         <Label x:Name="lblAge" Content="Age" HorizontalAlignment="Left" Margin="177,247,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.47,0.255"/>
@@ -34,6 +34,16 @@
         <Label x:Name="lblGender" Content="Gender" HorizontalAlignment="Left" Margin="320,247,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnRemove" Content="Remove item" Margin="588,448,10,0" Click="btnRemove_Click"/>
         <Label x:Name="lblCategory" Content="Category" HorizontalAlignment="Left" Margin="239,247,0,0" VerticalAlignment="Top"/>
+        <Grid x:Name="gridFeedingSchedule" HorizontalAlignment="Left" Height="261" Margin="724,10,0,0" VerticalAlignment="Top" Width="293">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="154*"/>
+                <RowDefinition Height="107*"/>
+            </Grid.RowDefinitions>
+            <GroupBox x:Name="FeedigSchedule" Header="Feeding Schedule" HorizontalAlignment="Left" Height="264" Margin="717,4,-724,-7" VerticalAlignment="Top" Width="300" Grid.RowSpan="2"></GroupBox>
+            <Label x:Name="lblEaterType" Content="Eater Type:" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top"/>
+            <TextBlock x:Name="txtEaterType" HorizontalAlignment="Left" Margin="89,15,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="194"/>
+            <TextBlock x:Name="txtFeedingSchedule" HorizontalAlignment="Left" Margin="10,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="210" Width="273" Grid.RowSpan="2"/>
+        </Grid>
 
     </Grid>
 </Window>

@@ -9,6 +9,8 @@ namespace AnimalMotel
     public class Cat : Mammal
     {
         public string SocialBehaviour { get; set; }
+        private EaterType eaterType = EaterType.Carnivore;
+        private FoodSchedule foodSchedule;
 
         /// <summary>
         /// Constructor that will set the species
@@ -16,6 +18,8 @@ namespace AnimalMotel
         public Cat() : base()
         {
             mammalSpecies = MammalSpecies.Cat;
+            foodSchedule = new FoodSchedule();
+            foodSchedule.AddFoodScheduleItem(Name + " likes to eat mice");
         }
         /// <summary>
         /// 
@@ -31,6 +35,8 @@ namespace AnimalMotel
         {
             this.SocialBehaviour = socialBehaviour;
             mammalSpecies = MammalSpecies.Cat;
+            foodSchedule = new FoodSchedule();
+            foodSchedule.AddFoodScheduleItem(Name + " likes to eat mice");
         }
 
         /// <summary>

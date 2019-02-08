@@ -66,6 +66,9 @@
     <Compile Include="AnimalLibrary\AnimalManager.cs" />
     <Compile Include="AnimalLibrary\Bird\BirdFactory.cs" />
     <Compile Include="AnimalLibrary\Bird\BirdSpecies.cs" />
+    <Compile Include="AnimalLibrary\EaterType.cs" />
+    <Compile Include="AnimalLibrary\FoodSchedule.cs" />
+    <Compile Include="AnimalLibrary\IAnimal.cs" />
     <Compile Include="AnimalLibrary\Mammal\MammalFactory.cs" />
     <Compile Include="AnimalLibrary\Mammal\MammalSpecies.cs" />
     <Compile Include="App.xaml.cs">
