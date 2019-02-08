@@ -45,7 +45,7 @@ namespace AnimalMotel
         /// Returns the species information.
         /// </summary>
         public override string ToString() {
-            return base.ToString() +  " Social behavoir: " + socialBehaviour;
+            return base.ToString() +  " Social behavoir: " + SocialBehaviour;
         }
     }
 }

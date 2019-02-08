@@ -47,7 +47,7 @@ namespace AnimalMotel
         /// </summary>
         public override string ToString()
         {
-            return base.ToString() + " Favourite food: " + favouriteFood;
+            return base.ToString() + " Favourite food: " + FavouriteFood;
         }
     }
 }

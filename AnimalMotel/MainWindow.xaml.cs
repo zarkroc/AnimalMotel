@@ -175,6 +175,7 @@ namespace AnimalMotel
             lstCategory.ItemsSource = Enum.GetValues(typeof(Category)).Cast<Category>();
             cboxGender.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
             lstRegisteredAnimals.Items.Clear();
+            cboxGender.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -384,8 +385,31 @@ namespace AnimalMotel
                 lstAnimals_SelectionChanged(null, null);
                 lstCategory_SelectionChanged(null, null);
 
-                //txtCategorySpec.Text = animal.CategoryInformation;
-                //txtSpeciesSpec.Text = animal.SpeciesInformation;
+                if (animal is Mammal)
+                {
+                    txtCategorySpec.Text = ((Mammal)animal).NumOfTeeth.ToString();
+                }
+                else if (animal is Bird)
+                {
+                    txtCategorySpec.Text = ((Bird)animal).FlyingSpeed.ToString();
+                }
+
+                if (animal is Dog)
+                {
+                    txtSpeciesSpec.Text = ((Dog)animal).FavouriteFood;
+                }
+                else if (animal is Cat)
+                {
+                    txtSpeciesSpec.Text = ((Cat)animal).SocialBehaviour;
+                }
+                else if (animal is Parrot)
+                {
+                    txtSpeciesSpec.Text = ((Parrot)animal).TalkingDialect;
+                }
+                else if (animal is Falcon)
+                {
+                    txtSpeciesSpec.Text = ((Falcon)animal).FavouriteFood;
+                }
 
             }
         }

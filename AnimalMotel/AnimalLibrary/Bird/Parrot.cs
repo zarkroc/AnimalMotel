@@ -46,7 +46,7 @@ namespace AnimalMotel
         /// </summary>
         public override string ToString()
         {
-            return base.ToString() + " Talking dialect: " + talkingDialect;
+            return base.ToString() + " Talking dialect: " + TalkingDialect;
         }
     }
 }
