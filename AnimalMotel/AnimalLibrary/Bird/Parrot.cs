@@ -36,7 +36,7 @@ namespace AnimalMotel
         /// Adds species information.
         /// </summary>
         /// <param name="speciesInformation"></param>
-        public override void AddSpeciesInformation(string speciesInformation)
+        internal void AddSpeciesInformation(string speciesInformation)
         {
             TalkingDialect = speciesInformation;
         }
@@ -44,6 +44,9 @@ namespace AnimalMotel
         /// <summary>
         /// Returns the speciesinformation.
         /// </summary>
-        public override string SpeciesInformation => "Talking dialect: " + TalkingDialect;
+        public override string ToString()
+        {
+            return base.ToString() + " Talking dialect: " + talkingDialect;
+        }
     }
 }

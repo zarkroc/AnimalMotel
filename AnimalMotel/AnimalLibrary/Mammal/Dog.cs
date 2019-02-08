@@ -32,12 +32,12 @@ namespace AnimalMotel
             this.FavouriteFood = favouriteFood;
             mammalSpecies = MammalSpecies.Dog;
         }
-        
+
         /// <summary>
         /// Overrides the add species information.
         /// </summary>
         /// <param name="speciesInformation"></param>
-        public override void AddSpeciesInformation(string speciesInformation)
+        internal void AddSpeciesInformation(string speciesInformation)
         {
             FavouriteFood = speciesInformation;
         }
@@ -45,6 +45,9 @@ namespace AnimalMotel
         /// <summary>
         /// Returns the extra species inforamation.
         /// </summary>
-        public override string SpeciesInformation => "Favourite food: " + FavouriteFood;
+        public override string ToString()
+        {
+            return base.ToString() + " Favourite food: " + favouriteFood;
+        }
     }
 }

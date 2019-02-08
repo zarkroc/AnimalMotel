@@ -94,26 +94,6 @@ namespace AnimalMotel
             this.category = category;
             this.gender = gender;
         }
-        /// <summary>
-        /// Method to add Category specific information
-        /// </summary>
-        /// <param name="categoryInformation"></param>
-        public abstract void AddCategoryInformation(string categoryInformation);
-        /// <summary>
-        /// Method to add species specific information
-        /// </summary>
-        /// <param name="speciesInformation"></param>
-        public abstract void AddSpeciesInformation(string speciesInformation);
-
-        /// <summary>
-        /// Method to return Category Information.
-        /// </summary>
-        public abstract string CategoryInformation { get; }
-
-        /// <summary>
-        /// Method to return species information
-        /// </summary>
-        public abstract string SpeciesInformation { get; }
 
         /// <summary>
         /// ToString method
@@ -122,7 +102,7 @@ namespace AnimalMotel
         /// <returns></returns>
         public override string ToString()
         {
-            return string.Format("{0,-3} {1,-17} {2,-8} {3,-11} {4,-11} {5,-11} {6,-11}", id, name, age, category, gender, CategoryInformation, SpeciesInformation);
+            return string.Format("{0,-3} {1,-17} {2,-8} {3,-11} {4,-11}", id, name, age, category, gender);
         }
     }
 }

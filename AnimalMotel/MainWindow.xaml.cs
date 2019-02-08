@@ -48,12 +48,12 @@ namespace AnimalMotel
                         animal = BirdFactory.CreateBird((BirdSpecies)lstAnimals.SelectedValue);
                         break;
                 }
-                if (! IsNumber(txtAge.Text))
+                if (!IsNumber(txtAge.Text))
                 {
                     MessageBox.Show("Please input only numbers in age");
                     return;
                 }
-                if (! IsNumber(txtCategorySpec.Text))
+                if (!IsNumber(txtCategorySpec.Text))
                 {
                     MessageBox.Show("Please input only numbers in category information");
                     return;
@@ -76,7 +76,15 @@ namespace AnimalMotel
                 {
                     if (result >= 0)
                     {
-                        animal.AddCategoryInformation(txtCategorySpec.Text);
+                        if (animal is Mammal)
+                        {
+                            ((Mammal)animal).AddCategoryInformation(txtCategorySpec.Text);
+                        }
+                        else if (animal is Bird)
+                        {
+                            ((Bird)animal).AddCategoryInformation(txtCategorySpec.Text);
+                        }
+
                     }
                     else
                     {
@@ -89,7 +97,7 @@ namespace AnimalMotel
                 if (IsNumber(txtName.Text))
                 {
                     MessageBox.Show("Please only input letters in the name");
-                    return;                    
+                    return;
                 }
                 else
                 {
@@ -103,10 +111,27 @@ namespace AnimalMotel
                 }
                 else
                 {
-                    animal.AddSpeciesInformation(txtSpeciesSpec.Text);
+                    if (animal is Dog)
+                    {
+                        ((Dog)animal).AddSpeciesInformation(txtSpeciesSpec.Text);
+                    }
+                    else if (animal is Cat)
+                    {
+                        ((Cat)animal).AddSpeciesInformation(txtSpeciesSpec.Text);
+                    }
+                    else if (animal is Parrot)
+                    {
+                        ((Parrot)animal).AddSpeciesInformation(txtSpeciesSpec.Text);
+                    }
+                    else if (animal is Falcon)
+                    {
+                        ((Falcon)animal).AddSpeciesInformation(txtSpeciesSpec.Text);
+                    }
+
+
                 }
 
-                animal.Gender = (Gender) cboxGender.SelectedValue;
+                animal.Gender = (Gender)cboxGender.SelectedValue;
                 animalManager.AddAnimal(animal);
                 ClearInput();
                 UpdateGUI();
@@ -132,10 +157,10 @@ namespace AnimalMotel
         {
             OpenFileDialog op = new OpenFileDialog();
             op.Title = "Select a picture";
-            op.Filter = "All supported graphics| *.jpg;*.jpeg;*.png|" + 
-                "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" + 
+            op.Filter = "All supported graphics| *.jpg;*.jpeg;*.png|" +
+                "JPEG (*.jpg;*.jpeg)|*.jpg;*.jpeg|" +
                 "Portable Network Graphic (*.png)|*.png";
-            if(op.ShowDialog() == true)
+            if (op.ShowDialog() == true)
             {
                 picAnimalImage.Source = new BitmapImage(new Uri(op.FileName));
             }
@@ -165,7 +190,7 @@ namespace AnimalMotel
             lstAnimals.ItemsSource = null;
             lstCategory.SelectedIndex = -1;
             cboxGender.SelectedIndex = -1;
-                        
+
             lblCategorySpec.Content = String.Empty;
             lblSpeciesSpec.Content = String.Empty;
             // Hide them until category and species has been selected.
@@ -184,7 +209,7 @@ namespace AnimalMotel
         {
             lstRegisteredAnimals.Items.Clear();
 
-            for (int i=0; i< animalManager.Count; i++)
+            for (int i = 0; i < animalManager.Count; i++)
             {
                 lstRegisteredAnimals.Items.Add(animalManager.GetAnimal(i));
             }
@@ -211,23 +236,25 @@ namespace AnimalMotel
                 MessageBox.Show("No specefication of species has been entered");
                 return false;
             }
-            else if(String.IsNullOrEmpty(txtName.Text))
+            else if (String.IsNullOrEmpty(txtName.Text))
             {
                 MessageBox.Show("No name has been entered");
                 return false;
             }
-            else if(lstAnimals.SelectedIndex == -1)
+            else if (lstAnimals.SelectedIndex == -1)
             {
                 MessageBox.Show("No Animal species has been selected");
                 return false;
             }
-            else if(lstCategory.SelectedIndex == -1)
+            else if (lstCategory.SelectedIndex == -1)
             {
                 MessageBox.Show("No Animal Category has been selected");
                 return false;
             }
             else
+            {
                 return true;
+            }
         }
 
         /// <summary>
@@ -311,8 +338,14 @@ namespace AnimalMotel
                 grpSpecification.Header = lstCategory.SelectedValue + " specification";
                 txtCategorySpec.Visibility = Visibility.Visible;
                 lblCategorySpec.Visibility = Visibility.Visible;
-
-                lstAnimals.Items.Clear();
+                if (lstAnimals.ItemsSource == null)
+                {
+                    lstAnimals.Items.Clear();
+                }
+                else
+                {
+                    lstAnimals.ItemsSource = null;
+                }
                 foreach (var item in Enum.GetValues(typeof(BirdSpecies)).Cast<BirdSpecies>())
                 {
                     lstAnimals.Items.Add(item);
@@ -333,6 +366,28 @@ namespace AnimalMotel
         {
             lstCategory.Visibility = Visibility.Visible;
             InitializeGUI();
+        }
+
+        private void lstRegisteredAnimals_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int index = lstRegisteredAnimals.SelectedIndex;
+            if (index > -1)
+            {
+                Animal animal = animalManager.GetAnimal(index);
+                //txtbEaterType.Text = animal.GetEaterType().ToString();
+                //txtbFeedingSchedule.Text = animal.GetFoodSchedule().ToString();
+                txtName.Text = animal.Name;
+                txtAge.Text = animal.Age.ToString();
+                cboxGender.SelectedValue = animal.Gender;
+                lstCategory.SelectedValue = animal.Category;
+                //lstAnimals.SelectedValue = animal.GetSpecies();
+                lstAnimals_SelectionChanged(null, null);
+                lstCategory_SelectionChanged(null, null);
+
+                //txtCategorySpec.Text = animal.CategoryInformation;
+                //txtSpeciesSpec.Text = animal.SpeciesInformation;
+
+            }
         }
     }
 }

@@ -37,13 +37,15 @@ namespace AnimalMotel
         /// Overrides the add species information.
         /// </summary>
         /// <param name="speciesInformation"></param>
-        public override void AddSpeciesInformation(string speciesInformation)
+        internal void AddSpeciesInformation(string speciesInformation)
         {
             SocialBehaviour = speciesInformation;
         }
         /// <summary>
         /// Returns the species information.
         /// </summary>
-        public override string SpeciesInformation => "Social behavoir: " + SocialBehaviour;
+        public override string ToString() {
+            return base.ToString() +  " Social behavoir: " + socialBehaviour;
+        }
     }
 }
