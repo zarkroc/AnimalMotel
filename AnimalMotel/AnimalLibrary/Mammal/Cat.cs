@@ -3,17 +3,12 @@
 /// Date : 2019-02-06
 /// Updated a bit for the second attempt at the course.
 /// Project Animal motel v1
-/// Updated 2018-04-10
 /// </summary>
 namespace AnimalMotel
 {
     public class Cat : Mammal
     {
-        private string socialBehaviour;
-        private EaterType eaterType = EaterType.Carnivore;
-        private FoodSchedule foodSchedule;
-
-        public string SocialBehaviour { get => socialBehaviour; set => socialBehaviour = value; }
+        public string SocialBehaviour { get; set; }
 
         /// <summary>
         /// Constructor that will set the species
@@ -21,7 +16,6 @@ namespace AnimalMotel
         public Cat() : base()
         {
             mammalSpecies = MammalSpecies.Cat;
-            foodSchedule = new FoodSchedule();
         }
         /// <summary>
         /// 
@@ -35,60 +29,21 @@ namespace AnimalMotel
         /// <param name="socialBehaviour">string social behavoir</param>
         public Cat(int id, string name, int age, Category category, Gender gender, int numOfTeeth, string socialBehaviour) : base(id, name, age, category, gender, numOfTeeth)
         {
-            this.socialBehaviour = socialBehaviour;
+            this.SocialBehaviour = socialBehaviour;
             mammalSpecies = MammalSpecies.Cat;
-            foodSchedule = new FoodSchedule();
         }
 
         /// <summary>
         /// Overrides the add species information.
         /// </summary>
         /// <param name="speciesInformation"></param>
-        internal void AddSpeciesInformation(string speciesInformation)
+        public override void AddSpeciesInformation(string speciesInformation)
         {
-            socialBehaviour = speciesInformation;
+            SocialBehaviour = speciesInformation;
         }
-
-        /// <summary>
-        /// Returns the food schedule
-        /// </summary>
-        /// <returns>FoodSchedule</returns>
-        public FoodSchedule GetFoodSchedule()
-        {
-            return foodSchedule;
-        }
-
-        /// <summary>
-        /// Return the specie
-        /// </summary>
-        /// <returns>string</returns>
-        public string GetSpecies()
-        {
-            return "Cat";
-        }
-
-        /// <summary>
-        /// Returns the eatertype
-        /// </summary>
-        /// <returns>EaterType</returns>
-        public EaterType GetEaterType()
-        {
-            return eaterType;
-        }
-
-        /// <summary>
-        /// Creates the food schedule
-        /// </summary>
-        internal void CreateFoodSchedule()
-        {
-            foodSchedule.AddFoodScheduleItem(Name + " likes to eat mice");
-        }
-
         /// <summary>
         /// Returns the species information.
         /// </summary>
-        public override string ToString() {
-            return base.ToString() +  " Social behavoir: " + socialBehaviour;
-        }
+        public override string SpeciesInformation => "Social behavoir: " + SocialBehaviour;
     }
 }

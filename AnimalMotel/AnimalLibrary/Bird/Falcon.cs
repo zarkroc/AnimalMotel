@@ -8,9 +8,6 @@ namespace AnimalMotel
 {
     public class Falcon : Bird
     {
-        private string favouriteFood;
-        private EaterType eaterType = EaterType.Carnivore;
-        private FoodSchedule foodSchedule;
 
         /// <summary>
         /// Constructor that will set the species
@@ -18,7 +15,6 @@ namespace AnimalMotel
         public Falcon() : base()
         {
             birdSpecies = BirdSpecies.Falcon;
-            foodSchedule = new FoodSchedule();
         }
         /// <summary>
         /// 
@@ -32,68 +28,26 @@ namespace AnimalMotel
         /// <param name="favouriteFood">string favourite food of animal</param>
         public Falcon(int id, string name, int age, Category category, Gender gender, int flyingSpeed, string favouriteFood) : base(id, name, age, category, gender, flyingSpeed)
         {
-            this.favouriteFood = favouriteFood;
-            birdSpecies = BirdSpecies.Falcon;
-            foodSchedule = new FoodSchedule();
+            this.FavouriteFood = favouriteFood;
         }
 
         /// <summary>
         /// returns or set the favourite food of the animal.
         /// </summary>
-        public string FavouriteFood {
-            get => favouriteFood;
-            set => favouriteFood = value;
-        }
+        public string FavouriteFood { get; set; }
 
         /// <summary>
         /// Add species information.
         /// </summary>
         /// <param name="speciesInformation"></param>
-        internal void AddSpeciesInformation(string speciesInformation)
+        public override void AddSpeciesInformation(string speciesInformation)
         {
-            favouriteFood = speciesInformation;
-        }
-
-        /// <summary>
-        /// Returns the food schedule
-        /// </summary>
-        /// <returns>FoodSchedule</returns>
-        public FoodSchedule GetFoodSchedule()
-        {
-            return foodSchedule;
-        }
-
-        /// <summary>
-        /// Return the specie
-        /// </summary>
-        /// <returns>string</returns>
-        public string GetSpecies()
-        {
-            return "Falcon";
-        }
-
-        /// <summary>
-        /// Returns the eatertype
-        /// </summary>
-        /// <returns>EaterType</returns>
-        public EaterType GetEaterType()
-        {
-            return eaterType;
-        }
-
-        /// <summary>
-        /// Creates the food schedule
-        /// </summary>
-        internal void CreateFoodSchedule()
-        {
-            foodSchedule.AddFoodScheduleItem(Name + " likes to eat " + favouriteFood);
+            FavouriteFood = speciesInformation;
         }
 
         /// <summary>
         /// Returns the species information.
         /// </summary>
-        public override string ToString() {
-            return base.ToString() + " Favourite food: " + favouriteFood;
-        }
+        public override string SpeciesInformation => "Favourite food: " + FavouriteFood;
     }
 }

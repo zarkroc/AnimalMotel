@@ -78,9 +78,6 @@
     <Compile Include="AnimalLibrary\Bird\Falcon.cs" />
     <Compile Include="AnimalLibrary\Mammal\Dog.cs" />
     <Compile Include="AnimalLibrary\Gender.cs" />
-    <Compile Include="EaterType.cs" />
-    <Compile Include="FoodSchedule.cs" />
-    <Compile Include="IAnimal.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

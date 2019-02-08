@@ -3,17 +3,12 @@
 /// Date : 2019-02-06
 /// Updated a bit for the second attempt at the course.
 /// Project Animal motel v1
-/// Updated 2018-04-10
 /// </summary>
 namespace AnimalMotel
 {
     public class Parrot : Bird
     {
-        private string talkingDialect;
-        private EaterType eaterType = EaterType.Herbivore;
-        private FoodSchedule foodSchedule;
-
-        public string TalkingDialect { get => talkingDialect; set => talkingDialect = value; }
+        public string TalkingDialect { get; set; }
 
         /// <summary>
         /// Constructor that will set the species
@@ -21,7 +16,6 @@ namespace AnimalMotel
         public Parrot() : base()
         {
             birdSpecies = BirdSpecies.Parrot;
-            foodSchedule = new FoodSchedule();
         }
         /// <summary>
         /// 
@@ -35,60 +29,21 @@ namespace AnimalMotel
         /// <param name="talkingDialect">string talking dialect of animal</param>
         public Parrot(int id, string name, int age, Category category, Gender gender, int flyingSpeed, string talkingDialect) : base(id, name, age, category, gender, flyingSpeed)
         {
-            this.talkingDialect = talkingDialect;
-            foodSchedule = new FoodSchedule();
+            this.TalkingDialect = talkingDialect;
         }
         
         /// <summary>
         /// Adds species information.
         /// </summary>
         /// <param name="speciesInformation"></param>
-        internal void AddSpeciesInformation(string speciesInformation)
+        public override void AddSpeciesInformation(string speciesInformation)
         {
-            talkingDialect = speciesInformation;
-        }
-
-        /// <summary>
-        /// Returns the food schedule
-        /// </summary>
-        /// <returns>FoodSchedule</returns>
-        public FoodSchedule GetFoodSchedule()
-        {
-            return foodSchedule;
-        }
-
-        /// <summary>
-        /// Return the specie
-        /// </summary>
-        /// <returns>string</returns>
-        public string GetSpecies()
-        {
-            return "Parrot";
-        }
-
-        /// <summary>
-        /// Returns the eatertype
-        /// </summary>
-        /// <returns>EaterType</returns>
-        public EaterType GetEaterType()
-        {
-            return eaterType;
-        }
-
-        /// <summary>
-        /// Creates the food schedule
-        /// </summary>
-        internal void CreateFoodSchedule()
-        {
-            foodSchedule.AddFoodScheduleItem(Name + " likes to eat seeds");
+            TalkingDialect = speciesInformation;
         }
 
         /// <summary>
         /// Returns the speciesinformation.
         /// </summary>
-        public override string ToString()
-        {
-            return base.ToString() + " Talking dialect: " + talkingDialect;
-        }
+        public override string SpeciesInformation => "Talking dialect: " + TalkingDialect;
     }
 }

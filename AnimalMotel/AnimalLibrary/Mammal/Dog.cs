@@ -3,17 +3,12 @@
 /// Date : 2019-02-06
 /// Updated a bit for the second attempt at the course.
 /// Project Animal motel v1
-/// Updated 2018-04-10
 /// </summary>
 namespace AnimalMotel
 {
     public class Dog : Mammal
     {
-        private string favouriteFood;
-        private EaterType eaterType = EaterType.Omnivorous;
-        private FoodSchedule foodSchedule;
-
-        public string FavouriteFood { get => favouriteFood; set => favouriteFood = value; }
+        public string FavouriteFood { get; set; }
 
         /// <summary>
         /// Constructor that will set the species
@@ -21,7 +16,6 @@ namespace AnimalMotel
         public Dog() : base()
         {
             mammalSpecies = MammalSpecies.Dog;
-            foodSchedule = new FoodSchedule();
         }
         /// <summary>
         /// 
@@ -35,61 +29,22 @@ namespace AnimalMotel
         /// <param name="favouriteFood"></param>
         public Dog(int id, string name, int age, Category category, Gender gender, int numOfTeeth, string favouriteFood) : base (id, name, age, category, gender, numOfTeeth)
         {
-            this.favouriteFood = favouriteFood;
+            this.FavouriteFood = favouriteFood;
             mammalSpecies = MammalSpecies.Dog;
-            foodSchedule = new FoodSchedule();
         }
-
+        
         /// <summary>
         /// Overrides the add species information.
         /// </summary>
         /// <param name="speciesInformation"></param>
-        internal void AddSpeciesInformation(string speciesInformation)
+        public override void AddSpeciesInformation(string speciesInformation)
         {
-            favouriteFood = speciesInformation;
-        }
-
-        /// <summary>
-        /// Returns the food schedule
-        /// </summary>
-        /// <returns>FoodSchedule</returns>
-        public FoodSchedule GetFoodSchedule()
-        {
-            return foodSchedule;
-        }
-
-        /// <summary>
-        /// Return the specie
-        /// </summary>
-        /// <returns>string</returns>
-        public string GetSpecies()
-        {
-            return "Dog";
-        }
-
-        /// <summary>
-        /// Returns the eatertype
-        /// </summary>
-        /// <returns>EaterType</returns>
-        public EaterType GetEaterType()
-        {
-            return eaterType;
-        }
-
-        /// <summary>
-        /// Creates the food schedule
-        /// </summary>
-        internal void CreateFoodSchedule()
-        {
-            foodSchedule.AddFoodScheduleItem(Name + " likes to eat all kinds of food");
+            FavouriteFood = speciesInformation;
         }
 
         /// <summary>
         /// Returns the extra species inforamation.
         /// </summary>
-        public override string ToString()
-        {
-            return base.ToString() + " Favourite food: " + favouriteFood;
-        }
+        public override string SpeciesInformation => "Favourite food: " + FavouriteFood;
     }
 }

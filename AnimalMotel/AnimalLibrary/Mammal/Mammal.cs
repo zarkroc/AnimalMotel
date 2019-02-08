@@ -44,7 +44,7 @@ namespace AnimalMotel
         /// Overrides the add category information.
         /// </summary>
         /// <param name="categoryInformation"></param>
-        internal void AddCategoryInformation(string categoryInformation)
+        public override void AddCategoryInformation(string categoryInformation)
         {
             int.TryParse(categoryInformation, out numOfTeeth);
         }
@@ -52,9 +52,6 @@ namespace AnimalMotel
         /// <summary>
         /// Returns a formatted version of the category information.
         /// </summary>
-        public override string ToString()
-        {
-            return base.ToString() + " Num of teeth: " + NumOfTeeth.ToString();
-        }
+        public override string CategoryInformation => "Num of teeth: " + NumOfTeeth.ToString();
     }
 }
