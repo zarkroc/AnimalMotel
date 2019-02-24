@@ -374,13 +374,13 @@ namespace AnimalMotel
             if (index > -1)
             {
                 Animal animal = animalManager.GetAnimal(index);
-                //txtbEaterType.Text = animal.GetEaterType().ToString();
-                //txtbFeedingSchedule.Text = animal.GetFoodSchedule().ToString();
+                txtEaterType.Text = animal.GetEaterType().ToString();
+                txtFeedingSchedule.Text = animal.GetFoodSchedule().ToString();
                 txtName.Text = animal.Name;
                 txtAge.Text = animal.Age.ToString();
                 cboxGender.SelectedValue = animal.Gender;
                 lstCategory.SelectedValue = animal.Category;
-                //lstAnimals.SelectedValue = animal.GetSpecies();
+                lstAnimals.SelectedValue = animal.GetSpecies();
                 lstAnimals_SelectionChanged(null, null);
                 lstCategory_SelectionChanged(null, null);
 
