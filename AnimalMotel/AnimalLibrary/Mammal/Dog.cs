@@ -58,14 +58,6 @@ namespace AnimalMotel
             return foodSchedule;
         }
 
-        /// <summary>
-        /// Return the specie
-        /// </summary>
-        /// <returns>string</returns>
-        public override string GetSpecies()
-        {
-            return "Dog";
-        }
 
         /// <summary>
         /// Returns the eatertype
@@ -81,12 +73,20 @@ namespace AnimalMotel
         /// </summary>
         public override void CreateFoodSchedule()
         {
-            foodSchedule.AddFoodScheduleItem(Name + " likes to eat all kinds of food");
+            foodSchedule.AddFoodScheduleItem(Name + " likes to eat " + favouriteFood);
         }
 
         /// <summary>
         /// Returns the extra species inforamation.
         /// </summary>
-        public override string SpeciesInformation => "Favourite food: " + favouriteFood;
+        public override string SpeciesInformation => favouriteFood;
+
+        /// <summary>
+        /// Returns the extra species inforamation.
+        /// </summary>
+        public override string ToString()
+        {
+            return base.ToString() + " Favourite food: " + FavouriteFood;
+        }
     }
 }

@@ -51,6 +51,24 @@ namespace AnimalMotel
         /// <summary>
         /// Returns a formatted version of the category information.
         /// </summary>
-        public override string CategoryInformation => "Fying speed: " + FlyingSpeed.ToString();
+        public override string CategoryInformation => FlyingSpeed.ToString();
+
+        /// <summary>
+        /// Returns a formatted version of the category information.
+        /// </summary>
+        public override string ToString()
+        {
+            return base.ToString() + " Fying speed: " + FlyingSpeed.ToString();
+        }
+
+        /// <summary>
+        /// Return the specie of the animal
+        /// </summary>
+        /// <returns></returns>
+        public override string GetSpecies()
+        {
+            return birdSpecies.ToString();
+        }
     }
+
 }

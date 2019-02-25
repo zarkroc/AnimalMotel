@@ -125,7 +125,7 @@ namespace AnimalMotel
         /// <returns></returns>
         public override string ToString()
         {
-            return string.Format("{0,-3} {1,-17} {2,-8} {3,-11} {4,-11} {5,-11} {6,-11}", id, name, age, category, gender, CategoryInformation, SpeciesInformation);
+            return string.Format("{0,-3} {1,-17} {2,-8} {3,-11} {4,-11}", id, name, age, category, gender);
         }
 
         public abstract void CreateFoodSchedule();

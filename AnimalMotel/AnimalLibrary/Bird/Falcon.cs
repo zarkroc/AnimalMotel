@@ -63,14 +63,6 @@ namespace AnimalMotel
             return foodSchedule;
         }
 
-        /// <summary>
-        /// Return the specie
-        /// </summary>
-        /// <returns>string</returns>
-        public override string GetSpecies()
-        {
-            return "Falcon";
-        }
 
         /// <summary>
         /// Returns the eatertype
@@ -92,6 +84,15 @@ namespace AnimalMotel
         /// <summary>
         /// Returns the species information.
         /// </summary>
-        public override string SpeciesInformation => "Favourite food: " + favouriteFood;
+        public override string SpeciesInformation => favouriteFood;
+
+        /// <summary>
+        /// Returns the species information.
+        /// </summary>
+        public override string ToString()
+        {
+            return base.ToString() + " Favourite food: " + FavouriteFood;
+        }
     }
+
 }

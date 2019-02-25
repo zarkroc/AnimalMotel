@@ -52,6 +52,23 @@ namespace AnimalMotel
         /// <summary>
         /// Returns a formatted version of the category information.
         /// </summary>
-        public override string CategoryInformation => "Num of teeth: " + NumOfTeeth.ToString();
+        public override string CategoryInformation => NumOfTeeth.ToString();
+
+        /// <summary>
+        /// Returns a formatted version of the category information.
+        /// </summary>
+        public override string ToString()
+        {
+            return base.ToString() + " Num of teeth: " + NumOfTeeth.ToString();
+        }
+
+        /// <summary>
+        /// Return the specie of the animal
+        /// </summary>
+        /// <returns></returns>
+        public override string GetSpecies()
+        {
+            return mammalSpecies.ToString();
+        }
     }
 }

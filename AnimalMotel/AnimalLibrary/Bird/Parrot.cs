@@ -57,14 +57,6 @@ namespace AnimalMotel
             return foodSchedule;
         }
 
-        /// <summary>
-        /// Return the specie
-        /// </summary>
-        /// <returns>string</returns>
-        public override string GetSpecies()
-        {
-            return "Parrot";
-        }
 
         /// <summary>
         /// Returns the eatertype
@@ -86,6 +78,14 @@ namespace AnimalMotel
         /// <summary>
         /// Returns the speciesinformation.
         /// </summary>
-        public override string SpeciesInformation => "Talking dialect: " + talkingDialect;
+        public override string SpeciesInformation => talkingDialect;
+
+        /// <summary>
+        /// Returns the speciesinformation.
+        /// </summary>
+        public override string ToString()
+        {
+            return base.ToString() + " Talking dialect: " + TalkingDialect;
+        }
     }
 }

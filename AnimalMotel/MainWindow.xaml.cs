@@ -377,8 +377,43 @@ namespace AnimalMotel
                 lstCategory_SelectionChanged(null, null);
                 txtCategorySpec.Text = animal.CategoryInformation;
                 txtSpeciesSpec.Text = animal.SpeciesInformation;
-                
+
+                switch (animal.Category)
+                {
+                    case Category.Bird:
+                        lblCategorySpec.Content = "Flying speed";
+                        animal = (Bird)animal;
+                        if (animal.GetSpecies().Equals(BirdSpecies.Falcon.ToString()))
+                        {
+                            lblSpeciesSpec.Content = "Favourite food";
+                            lblCategorySpec.Content = "Flying speed";
+                        }
+                        else if (animal.GetSpecies().Equals(BirdSpecies.Parrot.ToString()))
+                        {
+                            lblSpeciesSpec.Content = "Talking dialect";
+                            lblCategorySpec.Content = "Flying speed";
+                        }
+                        break;
+                    case Category.Mammal:
+                        lblCategorySpec.Content = "Number of teeth";
+                        animal = (Mammal)animal;
+                        if (animal.GetSpecies().Equals(MammalSpecies.Cat.ToString()))
+                        {
+                            lblSpeciesSpec.Content = "Social behavour";
+                            lblCategorySpec.Content = "Number of teeth";
+                        }
+                        else if (animal.GetSpecies().Equals(MammalSpecies.Dog.ToString()))
+                        {
+                            lblSpeciesSpec.Content = "Favourite food";
+                            lblCategorySpec.Content = "Number of teeth";
+                        }
+                        break;
+                }
             }
+            txtSpeciesSpec.Visibility = Visibility.Visible;
+            lblSpeciesSpec.Visibility = Visibility.Visible;
+            txtCategorySpec.Visibility = Visibility.Visible;
+            lblCategorySpec.Visibility = Visibility.Visible;
         }
     }
 }
