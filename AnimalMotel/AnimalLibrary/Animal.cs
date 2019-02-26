@@ -87,9 +87,9 @@ namespace AnimalMotel
         /// <param name="age">int age of animal</param>
         /// <param name="category">Category of animal</param>
         /// <param name="gender">Gender of animal</param>
-        public Animal(int id, string name, int age, Category category, Gender gender)
+        public Animal(string name, int age, Category category, Gender gender)
         {
-            this.id = id;
+            this.id = -1;
             this.name = name;
             this.age = age;
             this.category = category;

@@ -9,11 +9,10 @@ namespace AnimalMotel
 {
     public class Dog : Mammal
     {
-        private string favouriteFood;
         private EaterType eaterType = EaterType.Omnivorous;
         private FoodSchedule foodSchedule;
 
-        public string FavouriteFood { get => favouriteFood; set => favouriteFood = value; }
+        public string FavouriteFood { get => FavouriteFood1; set => FavouriteFood1 = value; }
 
         /// <summary>
         /// Constructor that will set the species
@@ -33,9 +32,9 @@ namespace AnimalMotel
         /// <param name="gender">Gender of the animal</param>
         /// <param name="numOfTeeth">int number of teeth of the animal</param>
         /// <param name="favouriteFood"></param>
-        public Dog(int id, string name, int age, Category category, Gender gender, int numOfTeeth, string favouriteFood) : base (id, name, age, category, gender, numOfTeeth)
+        public Dog(string name, int age, Category category, Gender gender, int numOfTeeth, string favouriteFood) : base (name, age, category, gender, numOfTeeth)
         {
-            this.favouriteFood = favouriteFood;
+            this.FavouriteFood1 = favouriteFood;
             mammalSpecies = MammalSpecies.Dog;
             foodSchedule = new FoodSchedule();
         }
@@ -46,7 +45,7 @@ namespace AnimalMotel
         /// <param name="speciesInformation"></param>
         public override void AddSpeciesInformation(string speciesInformation)
         {
-            favouriteFood = speciesInformation;
+            FavouriteFood1 = speciesInformation;
         }
 
         /// <summary>
@@ -73,13 +72,15 @@ namespace AnimalMotel
         /// </summary>
         public override void CreateFoodSchedule()
         {
-            foodSchedule.AddFoodScheduleItem(Name + " likes to eat " + favouriteFood);
+            foodSchedule.AddFoodScheduleItem(Name + " likes to eat " + FavouriteFood1);
         }
 
         /// <summary>
         /// Returns the extra species inforamation.
         /// </summary>
-        public override string SpeciesInformation => favouriteFood;
+        public override string SpeciesInformation => FavouriteFood1;
+
+        public string FavouriteFood1 { get; set; }
 
         /// <summary>
         /// Returns the extra species inforamation.

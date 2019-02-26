@@ -9,11 +9,10 @@ namespace AnimalMotel
 {
     public class Cat : Mammal
     {
-        private string socialBehaviour;
         private EaterType eaterType = EaterType.Carnivore;
         private FoodSchedule foodSchedule;
 
-        public string SocialBehaviour { get => socialBehaviour; set => socialBehaviour = value; }
+        public string SocialBehaviour { get => SocialBehaviour1; set => SocialBehaviour1 = value; }
 
         /// <summary>
         /// Constructor that will set the species
@@ -33,9 +32,9 @@ namespace AnimalMotel
         /// <param name="gender">Gender of the animal</param>
         /// <param name="numOfTeeth">int number of teeth of the animal</param>
         /// <param name="socialBehaviour">string social behavoir</param>
-        public Cat(int id, string name, int age, Category category, Gender gender, int numOfTeeth, string socialBehaviour) : base(id, name, age, category, gender, numOfTeeth)
+        public Cat(string name, int age, Category category, Gender gender, int numOfTeeth, string socialBehaviour) : base(name, age, category, gender, numOfTeeth)
         {
-            this.socialBehaviour = socialBehaviour;
+            this.SocialBehaviour1 = socialBehaviour;
             mammalSpecies = MammalSpecies.Cat;
             foodSchedule = new FoodSchedule();
         }
@@ -46,7 +45,7 @@ namespace AnimalMotel
         /// <param name="speciesInformation"></param>
         public override void AddSpeciesInformation(string speciesInformation)
         {
-            socialBehaviour = speciesInformation;
+            SocialBehaviour1 = speciesInformation;
         }
 
         /// <summary>
@@ -79,7 +78,9 @@ namespace AnimalMotel
         /// <summary>
         /// Returns the species information.
         /// </summary>
-        public override string SpeciesInformation => socialBehaviour;
+        public override string SpeciesInformation => SocialBehaviour1;
+
+        public string SocialBehaviour1 { get; set; }
 
         /// <summary>
         /// Returns the species information.

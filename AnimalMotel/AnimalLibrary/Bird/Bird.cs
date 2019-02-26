@@ -28,7 +28,7 @@ namespace AnimalMotel
         /// <param name="category">Category of the animal</param>
         /// <param name="gender">Gender of the animal</param>
         /// <param name="flyingSpeed">int flying speed of the animal</param>
-        public Bird(int id, string name, int age, Category category, Gender gender, int flyingSpeed) : base(id, name, age, category, gender)
+        public Bird(string name, int age, Category category, Gender gender, int flyingSpeed) : base(name, age, category, gender)
         {
             this.FlyingSpeed = flyingSpeed;
             this.Category = Category.Bird;
