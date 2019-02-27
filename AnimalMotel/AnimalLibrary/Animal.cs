@@ -16,6 +16,35 @@ namespace AnimalMotel
         private Category category;
 
         /// <summary>
+        /// Constructor to create an animal, set the properties to default values.
+        /// </summary>
+        public Animal()
+        {
+            this.age = 0;
+            this.category = 0;
+            this.gender = 0;
+            this.id = -1;
+            this.name = null;
+        }
+
+        /// <summary>
+        /// Constructur to create an animal with set properties.
+        /// </summary>
+        /// <param name="id">int Id of animal</param>
+        /// <param name="name">sting name of animal</param>
+        /// <param name="age">int age of animal</param>
+        /// <param name="category">Category of animal</param>
+        /// <param name="gender">Gender of animal</param>
+        public Animal(string name, int age, Category category, Gender gender)
+        {
+            this.id = -1;
+            this.name = name;
+            this.age = age;
+            this.category = category;
+            this.gender = gender;
+        }
+
+        /// <summary>
         /// Set and get the name of the animal
         /// </summary>
         public virtual string Name
@@ -66,35 +95,22 @@ namespace AnimalMotel
             set => category = value;
         }
 
+        /// <summary>
+        /// Method to return Category Information.
+        /// </summary>
+        public abstract string CategoryInformation { get; }
 
         /// <summary>
-        /// Constructor to create an animal, set the properties to default values.
+        /// return species information
         /// </summary>
-        public Animal()
-        {
-            this.age = 0;
-            this.category = 0;
-            this.gender = 0;
-            this.id = -1;
-            this.name = null;
-        }
-
+        public abstract string SpeciesInformation { get; }
         /// <summary>
-        /// Constructur to create an animal with set properties.
+        /// return Eatertype
         /// </summary>
-        /// <param name="id">int Id of animal</param>
-        /// <param name="name">sting name of animal</param>
-        /// <param name="age">int age of animal</param>
-        /// <param name="category">Category of animal</param>
-        /// <param name="gender">Gender of animal</param>
-        public Animal(string name, int age, Category category, Gender gender)
-        {
-            this.id = -1;
-            this.name = name;
-            this.age = age;
-            this.category = category;
-            this.gender = gender;
-        }
+        public abstract EaterType GetEaterType();
+
+
+
         /// <summary>
         /// Method to add Category specific information
         /// </summary>
@@ -106,17 +122,6 @@ namespace AnimalMotel
         /// <param name="speciesInformation"></param>
         public abstract void AddSpeciesInformation(string speciesInformation);
 
-        /// <summary>
-        /// Method to return Category Information.
-        /// </summary>
-        public abstract string CategoryInformation { get; }
-
-        /// <summary>
-        /// Method to return species information
-        /// </summary>
-        public abstract string SpeciesInformation { get; }
-        public abstract EaterType GetEaterType();
-        
 
         /// <summary>
         /// ToString method
