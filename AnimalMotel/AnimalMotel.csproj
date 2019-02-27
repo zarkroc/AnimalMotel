@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AnimalLibrary\EaterType.cs" />
+    <Compile Include="AnimalLibrary\FoodSchedule.cs" />
+    <Compile Include="AnimalLibrary\IAnimal.cs" />
     <Compile Include="FoodForm.xaml.cs">
       <DependentUpon>FoodForm.xaml</DependentUpon>
     </Compile>
