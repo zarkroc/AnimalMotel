@@ -64,10 +64,10 @@
     <Compile Include="FoodForm.xaml.cs">
       <DependentUpon>FoodForm.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ListManager.cs" />
-    <Compile Include="Recepie.cs" />
-    <Compile Include="RecepieManager.cs" />
-    <Compile Include="Staff.cs" />
+    <Compile Include="AnimalLibrary\ListManager.cs" />
+    <Compile Include="AnimalLibrary\Recepie.cs" />
+    <Compile Include="AnimalLibrary\RecepieManager.cs" />
+    <Compile Include="AnimalLibrary\Staff.cs" />
     <Compile Include="StaffForm.xaml.cs">
       <DependentUpon>StaffForm.xaml</DependentUpon>
     </Compile>
@@ -95,7 +95,7 @@
     <Compile Include="AnimalLibrary\Bird\Falcon.cs" />
     <Compile Include="AnimalLibrary\Mammal\Dog.cs" />
     <Compile Include="AnimalLibrary\Gender.cs" />
-    <Compile Include="IListManager.cs" />
+    <Compile Include="AnimalLibrary\IListManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
