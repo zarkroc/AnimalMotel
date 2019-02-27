@@ -1,6 +1,7 @@
 ﻿/// <summary>
 /// Author: Tomas Perers, ai2891
-/// Date : 2018-03-10
+/// Date : 2019-02-06
+/// Updated a bit for the second attempt at the course.
 /// Project Animal motel v1
 /// </summary>
 namespace AnimalMotel
@@ -27,7 +28,7 @@ namespace AnimalMotel
         /// <param name="category">Category of the animal</param>
         /// <param name="gender">Gender of the animal</param>
         /// <param name="flyingSpeed">int flying speed of the animal</param>
-        public Bird(int id, string name, int age, Category category, Gender gender, int flyingSpeed) : base(id, name, age, category, gender)
+        public Bird(string name, int age, Category category, Gender gender, int flyingSpeed) : base(name, age, category, gender)
         {
             this.FlyingSpeed = flyingSpeed;
             this.Category = Category.Bird;
@@ -50,6 +51,24 @@ namespace AnimalMotel
         /// <summary>
         /// Returns a formatted version of the category information.
         /// </summary>
-        public override string CategoryInformation => "Fying speed: " + FlyingSpeed.ToString();
+        public override string CategoryInformation => FlyingSpeed.ToString();
+
+        /// <summary>
+        /// Returns a formatted version of the category information.
+        /// </summary>
+        public override string ToString()
+        {
+            return base.ToString() + " Fying speed: " + FlyingSpeed.ToString();
+        }
+
+        /// <summary>
+        /// Return the specie of the animal
+        /// </summary>
+        /// <returns></returns>
+        public override string GetSpecies()
+        {
+            return birdSpecies.ToString();
+        }
     }
+
 }

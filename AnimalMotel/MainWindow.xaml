@@ -28,7 +28,7 @@
         <Button x:Name="btnAddAnimal" Content="Add this new animal" HorizontalAlignment="Left" Margin="350,220,0,0" VerticalAlignment="Top" Width="146" RenderTransformOrigin="-0.929,0.785" Click="btnAddAnimal_Click"/>
         <Button x:Name="btnAddPicture" Content="Load animal photo" HorizontalAlignment="Left" Margin="522,26,0,0" VerticalAlignment="Top" Width="158" RenderTransformOrigin="0.511,2.453" Click="btnAddPicture_Click"/>
         <Image x:Name="picAnimalImage" HorizontalAlignment="Left" Height="136" Margin="522,76,0,0" VerticalAlignment="Top" Width="158"/>
-        <CheckBox x:Name="chbListAllAnimals" Content="List all animals" HorizontalAlignment="Left" Margin="522,220,0,0" VerticalAlignment="Top" Width="134"/>
+        <CheckBox x:Name="chbListAllAnimals" Content="List all animals" HorizontalAlignment="Left" Margin="522,220,0,0" VerticalAlignment="Top" Width="134" Checked="ChbListAllAnimals_Checked" Unchecked="ChbListAllAnimals_Unchecked"/>
         <Label x:Name="lblGender" Content="Gender" HorizontalAlignment="Left" Margin="320,247,0,0" VerticalAlignment="Top"/>
         <Button x:Name="btnRemove" Content="Remove item" Margin="901,479,10,0" Click="btnRemove_Click"/>
         <Label x:Name="lblCategory" Content="Category" HorizontalAlignment="Left" Margin="239,247,0,0" VerticalAlignment="Top"/>
@@ -40,11 +40,15 @@
                 <TextBox x:Name="txtSpeciesSpec" HorizontalAlignment="Left" Height="23" Margin="128,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="GroupBox" HorizontalAlignment="Left" Height="244" Margin="691,-4,0,0" VerticalAlignment="Top" Width="332">
+        <GroupBox x:Name="grpFfoodSchedule" Header="Food schedule" HorizontalAlignment="Left" Height="244" Margin="691,-4,0,0" VerticalAlignment="Top" Width="332">
             <Grid HorizontalAlignment="Left" Height="234" Margin="10,0,-2,-12" VerticalAlignment="Top" Width="312">
-                <TextBlock x:Name="txtbFeedingSchedule" HorizontalAlignment="Left" Margin="0,36,0,0" TextWrapping="Wrap" Text="Feeding schedule" VerticalAlignment="Top" Height="198" Width="312"/>
-                <Label x:Name="lblEaterType" Content="Eater type" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top"/>
-                <TextBlock x:Name="txtbEaterType" HorizontalAlignment="Left" Margin="116,10,0,0" TextWrapping="Wrap" Text="eater type" VerticalAlignment="Top" Width="186"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="99*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock x:Name="txtbFeedingSchedule" HorizontalAlignment="Left" Margin="0,36,0,0" TextWrapping="Wrap" Text="Feeding schedule" VerticalAlignment="Top" Height="198" Width="312" Grid.ColumnSpan="2"/>
+                <Label x:Name="lblEaterType" Content="Eater type" HorizontalAlignment="Left" Margin="0,5,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2"/>
+                <TextBlock x:Name="txtbEaterType" HorizontalAlignment="Left" Margin="101.011,10,0,0" TextWrapping="Wrap" Text="eater type" VerticalAlignment="Top" Width="186" Grid.Column="1"/>
             </Grid>
         </GroupBox>
 

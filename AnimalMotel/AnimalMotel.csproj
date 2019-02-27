@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'x86|AnyCPU'">
+    <OutputPath>bin\x86\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -89,9 +92,6 @@
     <Compile Include="AnimalLibrary\Bird\Falcon.cs" />
     <Compile Include="AnimalLibrary\Mammal\Dog.cs" />
     <Compile Include="AnimalLibrary\Gender.cs" />
-    <Compile Include="EaterType.cs" />
-    <Compile Include="FoodSchedule.cs" />
-    <Compile Include="IAnimal.cs" />
     <Compile Include="IListManager.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

@@ -1,6 +1,7 @@
 ﻿/// <summary>
 /// Author: Tomas Perers, ai2891
-/// Date : 2018-03-10
+/// Date : 2019-02-06
+/// Updated a bit for the second attempt at the course.
 /// Project Animal motel v1
 /// Updated 2018-04-10
 /// </summary>
@@ -8,11 +9,10 @@ namespace AnimalMotel
 {
     public class Parrot : Bird
     {
-        private string talkingDialect;
         private EaterType eaterType = EaterType.Herbivore;
         private FoodSchedule foodSchedule;
 
-        public string TalkingDialect { get => talkingDialect; set => talkingDialect = value; }
+        public string TalkingDialect { get; set; }
 
         /// <summary>
         /// Constructor that will set the species
@@ -32,9 +32,9 @@ namespace AnimalMotel
         /// <param name="gender">Gender of the animal</param>
         /// <param name="flyingSpeed">int flying speed of animal</param>
         /// <param name="talkingDialect">string talking dialect of animal</param>
-        public Parrot(int id, string name, int age, Category category, Gender gender, int flyingSpeed, string talkingDialect) : base(id, name, age, category, gender, flyingSpeed)
+        public Parrot(string name, int age, Category category, Gender gender, int flyingSpeed, string talkingDialect) : base(name, age, category, gender, flyingSpeed)
         {
-            this.talkingDialect = talkingDialect;
+            this.TalkingDialect = talkingDialect;
             foodSchedule = new FoodSchedule();
         }
         
@@ -44,7 +44,7 @@ namespace AnimalMotel
         /// <param name="speciesInformation"></param>
         public override void AddSpeciesInformation(string speciesInformation)
         {
-            talkingDialect = speciesInformation;
+            TalkingDialect = speciesInformation;
         }
 
         /// <summary>
@@ -56,14 +56,6 @@ namespace AnimalMotel
             return foodSchedule;
         }
 
-        /// <summary>
-        /// Return the specie
-        /// </summary>
-        /// <returns>string</returns>
-        public override string GetSpecies()
-        {
-            return "Parrot";
-        }
 
         /// <summary>
         /// Returns the eatertype
@@ -85,6 +77,14 @@ namespace AnimalMotel
         /// <summary>
         /// Returns the speciesinformation.
         /// </summary>
-        public override string SpeciesInformation => "Talking dialect: " + talkingDialect;
+        public override string SpeciesInformation => TalkingDialect;
+
+        /// <summary>
+        /// Returns the speciesinformation.
+        /// </summary>
+        public override string ToString()
+        {
+            return base.ToString() + " Talking dialect: " + TalkingDialect;
+        }
     }
 }

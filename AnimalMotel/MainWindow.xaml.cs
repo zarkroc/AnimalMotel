@@ -6,7 +6,8 @@ using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 /// <summary>
 /// Author: Tomas Perers
-/// Date : 2018-03-19
+/// Date : 2019-02-06
+/// Updated a bit for the second attempt at the course.
 /// </summary>
 namespace AnimalMotel
 {
@@ -154,6 +155,14 @@ namespace AnimalMotel
             ClearInput();
             lstCategory.ItemsSource = Enum.GetValues(typeof(Category)).Cast<Category>();
             cboxGender.ItemsSource = Enum.GetValues(typeof(Gender)).Cast<Gender>();
+            if(lstAnimals.ItemsSource == null)
+            {
+                lstAnimals.Items.Clear();
+            }
+            else
+            {
+                lstAnimals.ItemsSource = null;
+            }
             lstRegisteredAnimals.Items.Clear();
         }
 
@@ -246,6 +255,11 @@ namespace AnimalMotel
             grpSpecification.Header = lstCategory.SelectedValue + " specification";
             txtCategorySpec.Visibility = Visibility.Visible;
             lblCategorySpec.Visibility = Visibility.Visible;
+            if(lstAnimals.ItemsSource == null)
+            {
+                lstAnimals.Items.Clear();
+            }
+            
 
             switch (lstCategory.SelectedValue)
             {
@@ -274,16 +288,20 @@ namespace AnimalMotel
             {
                 case MammalSpecies.Cat:
                     lblSpeciesSpec.Content = "Social behavour";
+                    lblCategorySpec.Content = "Number of teeth";
                     break;
                 case MammalSpecies.Dog:
                     lblSpeciesSpec.Content = "Favourite food";
+                    lblCategorySpec.Content = "Number of teeth";
                     break;
 
                 case BirdSpecies.Falcon:
                     lblSpeciesSpec.Content = "Favourite food";
+                    lblCategorySpec.Content = "Flying speed";
                     break;
                 case BirdSpecies.Parrot:
                     lblSpeciesSpec.Content = "Talking dialect";
+                    lblCategorySpec.Content = "Flying speed";
                     break;
             }
         }
@@ -300,6 +318,46 @@ namespace AnimalMotel
                 animalManager.RemoveAnimal(lstRegisteredAnimals.SelectedIndex);
                 UpdateGUI();
             }
+        }
+
+        private void ChbListAllAnimals_Checked(object sender, RoutedEventArgs e)
+        {
+
+            if (chbListAllAnimals.IsChecked == true)
+            {
+                lstCategory.Visibility = Visibility.Hidden;
+                grpSpecification.Header = lstCategory.SelectedValue + " specification";
+                txtCategorySpec.Visibility = Visibility.Visible;
+                lblCategorySpec.Visibility = Visibility.Visible;
+                if(lstAnimals.ItemsSource == null)
+                {
+                    lstAnimals.Items.Clear();
+                }
+                else
+                {
+                    lstAnimals.ItemsSource = null;
+                }
+                
+                foreach (var item in Enum.GetValues(typeof(BirdSpecies)).Cast<BirdSpecies>())
+                {
+                    lstAnimals.Items.Add(item);
+                }
+
+                foreach (var item in Enum.GetValues(typeof(MammalSpecies)).Cast<MammalSpecies>())
+                {
+                    lstAnimals.Items.Add(item);
+                }
+            }
+            else
+            {
+                lstCategory.Visibility = Visibility.Visible;
+                InitializeGUI();
+            }
+        }
+        private void ChbListAllAnimals_Unchecked(object sender, RoutedEventArgs e)
+        {
+            lstCategory.Visibility = Visibility.Visible;
+            InitializeGUI();
         }
 
         private void lstRegisteredAnimals_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -319,8 +377,43 @@ namespace AnimalMotel
                 lstCategory_SelectionChanged(null, null);
                 txtCategorySpec.Text = animal.CategoryInformation;
                 txtSpeciesSpec.Text = animal.SpeciesInformation;
-                
+
+                switch (animal.Category)
+                {
+                    case Category.Bird:
+                        lblCategorySpec.Content = "Flying speed";
+                        animal = (Bird)animal;
+                        if (animal.GetSpecies().Equals(BirdSpecies.Falcon.ToString()))
+                        {
+                            lblSpeciesSpec.Content = "Favourite food";
+                            lblCategorySpec.Content = "Flying speed";
+                        }
+                        else if (animal.GetSpecies().Equals(BirdSpecies.Parrot.ToString()))
+                        {
+                            lblSpeciesSpec.Content = "Talking dialect";
+                            lblCategorySpec.Content = "Flying speed";
+                        }
+                        break;
+                    case Category.Mammal:
+                        lblCategorySpec.Content = "Number of teeth";
+                        animal = (Mammal)animal;
+                        if (animal.GetSpecies().Equals(MammalSpecies.Cat.ToString()))
+                        {
+                            lblSpeciesSpec.Content = "Social behavour";
+                            lblCategorySpec.Content = "Number of teeth";
+                        }
+                        else if (animal.GetSpecies().Equals(MammalSpecies.Dog.ToString()))
+                        {
+                            lblSpeciesSpec.Content = "Favourite food";
+                            lblCategorySpec.Content = "Number of teeth";
+                        }
+                        break;
+                }
             }
+            txtSpeciesSpec.Visibility = Visibility.Visible;
+            lblSpeciesSpec.Visibility = Visibility.Visible;
+            txtCategorySpec.Visibility = Visibility.Visible;
+            lblCategorySpec.Visibility = Visibility.Visible;
         }
     }
 }
