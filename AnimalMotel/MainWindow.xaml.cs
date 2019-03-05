@@ -113,7 +113,7 @@ namespace AnimalMotel
 
                 animal.Gender = (Gender) cboxGender.SelectedValue;
                 animal.CreateFoodSchedule();
-                animalManager.AddAnimal(animal);
+                animalManager.Add(animal);
                 ClearInput();
                 UpdateGUI();
             }
@@ -200,7 +200,7 @@ namespace AnimalMotel
 
             for (int i=0; i< animalManager.Count; i++)
             {
-                lstRegisteredAnimals.Items.Add(animalManager.GetAnimal(i));
+                lstRegisteredAnimals.Items.Add(animalManager.GetAt(i));
             }
         }
 
@@ -315,7 +315,7 @@ namespace AnimalMotel
         {
             if (lstRegisteredAnimals.SelectedIndex > -1)
             {
-                animalManager.RemoveAnimal(lstRegisteredAnimals.SelectedIndex);
+                animalManager.DeleteAt(lstRegisteredAnimals.SelectedIndex);
                 UpdateGUI();
             }
         }
@@ -365,7 +365,7 @@ namespace AnimalMotel
             int index = lstRegisteredAnimals.SelectedIndex;
             if (index > -1)
             {
-                Animal animal = animalManager.GetAnimal(index);
+                Animal animal = animalManager.GetAt(index);
                 txtbEaterType.Text = animal.GetEaterType().ToString();
                 txtbFeedingSchedule.Text = animal.GetFoodSchedule().ToString();
                 txtName.Text = animal.Name;

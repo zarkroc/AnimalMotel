@@ -10,9 +10,24 @@ namespace AnimalMotel
 {
     public interface IListManager<T>
     {
+        /// <summary>
+        /// Return the number of items 
+        /// </summary>
         int Count { get; }
 
+        /// <summary>
+        /// Add an object to the collection
+        /// </summary>
+        /// <param name="aType"></param>
+        /// <returns>True if sucessful</returns>
         bool Add(T aType);
+
+        /// <summary>
+        /// Change an object in the collection
+        /// </summary>
+        /// <param name="aType"></param>
+        /// <param name="anIndex"></param>
+        /// <returns>True if sucessful</returns>
         bool ChangeAt(T aType, int anIndex);
         bool CheckIndex(int index);
         void DeleteAll();
