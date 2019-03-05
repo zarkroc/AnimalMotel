@@ -36,9 +36,17 @@ namespace AnimalMotel
         /// <param name="e"></param>
         private void btnAddAnimal_Click(object sender, RoutedEventArgs e)
         {
+            Animal animal = null;
+            CreateAnimal(animal);
+            animalManager.Add(animal);
+            ClearInput();
+            UpdateGUI();
+        }
+
+        private void CreateAnimal(Animal animal)
+        {
             if (CheckInput())
             {
-                Animal animal = null;
                 switch (lstCategory.SelectedValue)
                 {
                     case Category.Mammal:
@@ -48,12 +56,12 @@ namespace AnimalMotel
                         animal = BirdFactory.CreateBird((BirdSpecies)lstAnimals.SelectedValue);
                         break;
                 }
-                if (! IsNumber(txtAge.Text))
+                if (!IsNumber(txtAge.Text))
                 {
                     MessageBox.Show("Please input only numbers in age");
                     return;
                 }
-                if (! IsNumber(txtCategorySpec.Text))
+                if (!IsNumber(txtCategorySpec.Text))
                 {
                     MessageBox.Show("Please input only numbers in category information");
                     return;
@@ -89,7 +97,7 @@ namespace AnimalMotel
                 if (IsNumber(txtName.Text))
                 {
                     MessageBox.Show("Please only input letters in the name");
-                    return;                    
+                    return;
                 }
                 else
                 {
@@ -111,11 +119,8 @@ namespace AnimalMotel
                     return;
                 }
 
-                animal.Gender = (Gender) cboxGender.SelectedValue;
+                animal.Gender = (Gender)cboxGender.SelectedValue;
                 animal.CreateFoodSchedule();
-                animalManager.Add(animal);
-                ClearInput();
-                UpdateGUI();
             }
         }
 
@@ -415,5 +420,19 @@ namespace AnimalMotel
             txtCategorySpec.Visibility = Visibility.Visible;
             lblCategorySpec.Visibility = Visibility.Visible;
         }
+
+        private void BtnChange_Click(object sender, RoutedEventArgs e)
+        {
+        int index = lstRegisteredAnimals.SelectedIndex;
+        if (index > -1)
+            {
+                Animal animal = animalManager.GetAt(index);
+                CreateAnimal(animal);
+                animalManager.ChangeAt(animal, index);
+                ClearInput();
+                UpdateGUI();
+            }
+        }
     }
 }
+
