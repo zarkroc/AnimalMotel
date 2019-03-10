@@ -58,7 +58,7 @@ namespace AnimalMotel
 
         public bool CheckIndex(int index)
         {
-            if (index > -1 && index > Count)
+            if (index > -1 && index < Count)
                 return true;
             else
                 return false;

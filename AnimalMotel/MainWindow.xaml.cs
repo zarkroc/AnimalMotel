@@ -37,13 +37,16 @@ namespace AnimalMotel
         private void btnAddAnimal_Click(object sender, RoutedEventArgs e)
         {
             Animal animal = null;
-            CreateAnimal(animal);
-            animalManager.Add(animal);
-            ClearInput();
-            UpdateGUI();
+            animal = CreateAnimal(animal);
+            if (animal != null)
+            {
+                animalManager.AddAnimal(animal);
+                ClearInput();
+                UpdateGUI();
+            }
         }
 
-        private void CreateAnimal(Animal animal)
+        private Animal CreateAnimal(Animal animal)
         {
             if (CheckInput())
             {
@@ -59,12 +62,12 @@ namespace AnimalMotel
                 if (!IsNumber(txtAge.Text))
                 {
                     MessageBox.Show("Please input only numbers in age");
-                    return;
+                    return null;
                 }
                 if (!IsNumber(txtCategorySpec.Text))
                 {
                     MessageBox.Show("Please input only numbers in category information");
-                    return;
+                    return null;
                 }
                 if (int.TryParse(txtAge.Text, out int age))
                 {
@@ -75,7 +78,7 @@ namespace AnimalMotel
                     else
                     {
                         MessageBox.Show("Age is negative");
-                        return;
+                        return null;
 
                     }
                 }
@@ -89,7 +92,7 @@ namespace AnimalMotel
                     else
                     {
                         MessageBox.Show("Category information is negative");
-                        return;
+                        return null;
                     }
 
                 }
@@ -97,7 +100,7 @@ namespace AnimalMotel
                 if (IsNumber(txtName.Text))
                 {
                     MessageBox.Show("Please only input letters in the name");
-                    return;
+                    return null;
                 }
                 else
                 {
@@ -107,7 +110,7 @@ namespace AnimalMotel
                 if (IsNumber(txtSpeciesSpec.Text))
                 {
                     MessageBox.Show("Please only input letters in the species information.");
-                    return;
+                    return null;
                 }
                 else
                 {
@@ -116,12 +119,13 @@ namespace AnimalMotel
                 if (cboxGender.SelectedIndex == -1)
                 {
                     MessageBox.Show("Please choose a gender");
-                    return;
+                    return null;
                 }
 
                 animal.Gender = (Gender)cboxGender.SelectedValue;
                 animal.CreateFoodSchedule();
             }
+            return animal;
         }
 
         /// <summary>
@@ -376,8 +380,8 @@ namespace AnimalMotel
                 txtName.Text = animal.Name;
                 txtAge.Text = animal.Age.ToString();
                 cboxGender.SelectedValue = animal.Gender;
-                lstCategory.SelectedValue = animal.Category;
-                lstAnimals.SelectedValue = animal.GetSpecies();
+                lstCategory.SelectedItem = animal.Category;
+                lstAnimals.SelectedItem = animal.GetSpecies();
                 lstAnimals_SelectionChanged(null, null);
                 lstCategory_SelectionChanged(null, null);
                 txtCategorySpec.Text = animal.CategoryInformation;
