@@ -23,5 +23,25 @@ namespace AnimalMotel
         {
             InitializeComponent();
         }
+
+        private void TxtRecepie_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void BtnChange_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnAdd_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BtnDeleteIngredient_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

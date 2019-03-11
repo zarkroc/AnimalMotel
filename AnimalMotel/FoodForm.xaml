@@ -5,8 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimalMotel"
         mc:Ignorable="d"
-        Title="FoodForm" Height="300" Width="300">
+        Title="FoodForm" Height="297.479" Width="349.58">
     <Grid>
-        
+        <TextBox x:Name="txtRecepieName" HorizontalAlignment="Left" Height="23" Margin="142,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
+        <TextBox x:Name="txtIngredients" HorizontalAlignment="Left" Height="23" Margin="142,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190"/>
+        <Label x:Name="lblName" Content="Name" HorizontalAlignment="Left" Margin="34,10,0,0" VerticalAlignment="Top" Width="56"/>
+        <Label x:Name="lblIngredients" Content="Ingredients" HorizontalAlignment="Left" Margin="34,41,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btnAdd" Content="Add ingredients" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="116" Click="BtnAdd_Click"/>
+        <Button x:Name="btnChangeIngredient" Content="Change Ingredient" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Width="116" Click="BtnChange_Click"/>
+        <Button x:Name="btnDeleteIngredient" Content="Delete Ingredient" HorizontalAlignment="Left" Margin="10,165,0,0" VerticalAlignment="Top" Width="116" Click="BtnDeleteIngredient_Click"/>
+        <ListBox x:Name="lstRecepie" HorizontalAlignment="Left" Height="185" Margin="142,72,0,0" VerticalAlignment="Top" Width="190"/>
+
     </Grid>
 </Window>

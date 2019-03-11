@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AnimalMotel
 {
-    class RecepieManager
+    class RecepieManager : ListManager<Recepie>
     {
     }
 }
