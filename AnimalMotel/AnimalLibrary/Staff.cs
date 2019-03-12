@@ -8,5 +8,13 @@ namespace AnimalMotel
 {
     class Staff
     {
+        private IListManager<string> m_qualifications;
+
+        public Staff()
+        {
+            m_qualifications = new ListManager<string>();
+        }
+
+        public string Name { get; set; }
     }
 }

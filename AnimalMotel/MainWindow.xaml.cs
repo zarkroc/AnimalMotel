@@ -18,6 +18,7 @@ namespace AnimalMotel
     {
 
         private AnimalManager animalManager;
+        private RecepieManager recepieManager;
 
         /// <summary>
         /// Constructor that will clear and initialize the GUI.
@@ -26,6 +27,7 @@ namespace AnimalMotel
         {
             InitializeComponent();
             animalManager = new AnimalManager();
+            recepieManager = new RecepieManager();
             InitializeGUI();
         }
 
@@ -435,6 +437,25 @@ namespace AnimalMotel
                 animalManager.ChangeAt(animal, index);
                 ClearInput();
                 UpdateGUI();
+            }
+        }
+
+        private void BtnAddFood_Click(object sender, RoutedEventArgs e)
+        {
+            var food = new FoodForm();
+            food.ShowDialog();
+            if (food.DialogResult.HasValue && food.DialogResult.Value)
+            {
+                MessageBox.Show("User clicked OK");
+                Recepie newRecepie = new Recepie();
+                newRecepie.Name = food.Recepie.Name;
+                newRecepie.Ingredients = food.Recepie.Ingredients;
+                recepieManager.Add(newRecepie);
+            }
+            for (int i = 0; i < recepieManager.Count; i++)
+            {
+                var recepieText = recepieManager.GetAt(i).ToString();
+                lstRecepie.Items.Add(recepieText);
             }
         }
     }

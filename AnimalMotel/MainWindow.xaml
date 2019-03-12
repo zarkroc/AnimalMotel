@@ -53,9 +53,9 @@
             </Grid>
         </GroupBox>
         <Button x:Name="btnChange" Content="Change" HorizontalAlignment="Left" Margin="796,482,0,0" VerticalAlignment="Top" Width="75" Click="BtnChange_Click"/>
-        <Button x:Name="btnAddFood" Content="Add Food" HorizontalAlignment="Left" Margin="1233,126,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.467,0.477"/>
+        <Button x:Name="btnAddFood" Content="Add Food" HorizontalAlignment="Left" Margin="1233,126,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.467,0.477" Click="BtnAddFood_Click"/>
         <Button x:Name="btnAddStaff" Content="Add Staff" HorizontalAlignment="Left" Margin="1233,249,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.473,-0.523"/>
-        <ListBox HorizontalAlignment="Left" Height="107" Margin="1014,14,0,0" VerticalAlignment="Top" Width="295"/>
+        <ListBox x:Name="lstRecepie" HorizontalAlignment="Left" Height="107" Margin="1014,14,0,0" VerticalAlignment="Top" Width="295"/>
         <ListBox HorizontalAlignment="Left" Height="201" Margin="1038,273,0,0" VerticalAlignment="Top" Width="271"/>
 
     </Grid>

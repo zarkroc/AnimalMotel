@@ -6,7 +6,24 @@ using System.Threading.Tasks;
 
 namespace AnimalMotel
 {
-    class Recepie
+    class Recepie 
     {
+        public string Name { get; set; }
+        internal ListManager<string> Ingredients { get; set; }
+
+        public Recepie()
+        {
+            Ingredients = new ListManager<string>();
+        }
+
+        public override string ToString()
+        {
+            string output ="";
+            for (var i=0; i < Ingredients.Count; i++)
+            {
+                output += Ingredients.GetAt(i) + " ";
+            }
+            return output;
+        }
     }
 }
