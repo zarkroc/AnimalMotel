@@ -458,6 +458,12 @@ namespace AnimalMotel
                 lstRecepie.Items.Add(recepieText);
             }
         }
+
+        private void BtnAddStaff_Click(object sender, RoutedEventArgs e)
+        {
+            var staff = new StaffForm();
+            staff.ShowDialog();
+        }
     }
 }
 
