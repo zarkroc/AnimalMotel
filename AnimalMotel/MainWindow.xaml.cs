@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
+
 /// <summary>
 /// Author: Tomas Perers
 /// Date : 2019-02-06
@@ -47,7 +48,11 @@ namespace AnimalMotel
                 UpdateGUI();
             }
         }
-
+        /// <summary>
+        /// Setts all the information in an animal object
+        /// </summary>
+        /// <param name="animal">Animal</param>
+        /// <returns>Animal</returns>
         private Animal CreateAnimal(Animal animal)
         {
             if (CheckInput())
@@ -209,9 +214,9 @@ namespace AnimalMotel
         {
             lstRegisteredAnimals.Items.Clear();
 
-            for (int i=0; i< animalManager.Count; i++)
+            foreach (var item in animalManager.ToStringList())
             {
-                lstRegisteredAnimals.Items.Add(animalManager.GetAt(i));
+                lstRegisteredAnimals.Items.Add(item);
             }
         }
 
@@ -331,6 +336,11 @@ namespace AnimalMotel
             }
         }
 
+        /// <summary>
+        /// Update GUI to show all animals
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ChbListAllAnimals_Checked(object sender, RoutedEventArgs e)
         {
 
@@ -365,12 +375,23 @@ namespace AnimalMotel
                 InitializeGUI();
             }
         }
+
+        /// <summary>
+        /// Update the GUI to not show all the animals.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ChbListAllAnimals_Unchecked(object sender, RoutedEventArgs e)
         {
             lstCategory.Visibility = Visibility.Visible;
             InitializeGUI();
         }
 
+        /// <summary>
+        /// Update the GUI when an animal is selected in the list.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void lstRegisteredAnimals_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             int index = lstRegisteredAnimals.SelectedIndex;
@@ -383,7 +404,6 @@ namespace AnimalMotel
                 txtAge.Text = animal.Age.ToString();
                 cboxGender.SelectedValue = animal.Gender;
                 lstCategory.SelectedItem = animal.Category;
-                lstAnimals.SelectedItem = animal.GetSpecies();
                 lstAnimals_SelectionChanged(null, null);
                 lstCategory_SelectionChanged(null, null);
                 txtCategorySpec.Text = animal.CategoryInformation;
@@ -398,11 +418,13 @@ namespace AnimalMotel
                         {
                             lblSpeciesSpec.Content = "Favourite food";
                             lblCategorySpec.Content = "Flying speed";
+                            lstAnimals.SelectedItem = BirdSpecies.Falcon;
                         }
                         else if (animal.GetSpecies().Equals(BirdSpecies.Parrot.ToString()))
                         {
                             lblSpeciesSpec.Content = "Talking dialect";
                             lblCategorySpec.Content = "Flying speed";
+                            lstAnimals.SelectedItem = BirdSpecies.Parrot;
                         }
                         break;
                     case Category.Mammal:
@@ -412,11 +434,13 @@ namespace AnimalMotel
                         {
                             lblSpeciesSpec.Content = "Social behavour";
                             lblCategorySpec.Content = "Number of teeth";
+                            lstAnimals.SelectedItem = MammalSpecies.Cat;
                         }
                         else if (animal.GetSpecies().Equals(MammalSpecies.Dog.ToString()))
                         {
                             lblSpeciesSpec.Content = "Favourite food";
                             lblCategorySpec.Content = "Number of teeth";
+                            lstAnimals.SelectedItem = MammalSpecies.Dog;
                         }
                         break;
                 }
@@ -427,42 +451,70 @@ namespace AnimalMotel
             lblCategorySpec.Visibility = Visibility.Visible;
         }
 
+        /// <summary>
+        /// Change information for a selected animal.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnChange_Click(object sender, RoutedEventArgs e)
         {
         int index = lstRegisteredAnimals.SelectedIndex;
         if (index > -1)
             {
                 Animal animal = animalManager.GetAt(index);
-                CreateAnimal(animal);
+                var id = animal.Id;
+                animal = CreateAnimal(animal);
+                animal.Id = id;
                 animalManager.ChangeAt(animal, index);
                 ClearInput();
                 UpdateGUI();
             }
         }
 
+        /// <summary>
+        /// Shows the FoodForm and stores the recepie in the manager and displays it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnAddFood_Click(object sender, RoutedEventArgs e)
         {
-            var food = new FoodForm();
+            var food =  new FoodForm();
             food.ShowDialog();
             if (food.DialogResult.HasValue && food.DialogResult.Value)
             {
-                MessageBox.Show("User clicked OK");
                 Recepie newRecepie = new Recepie();
                 newRecepie.Name = food.Recepie.Name;
                 newRecepie.Ingredients = food.Recepie.Ingredients;
                 recepieManager.Add(newRecepie);
             }
-            for (int i = 0; i < recepieManager.Count; i++)
+            lstRecepie.Items.Clear();
+            foreach (var item in recepieManager.ToStringList())
             {
-                var recepieText = recepieManager.GetAt(i).ToString();
-                lstRecepie.Items.Add(recepieText);
+                lstRecepie.Items.Add(item);
             }
         }
 
+        /// <summary>
+        /// Button to show form for staff and displays it.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void BtnAddStaff_Click(object sender, RoutedEventArgs e)
         {
-            var staff = new StaffForm();
-            staff.ShowDialog();
+            Staff staff = new Staff();
+            var staffForm = new StaffForm(staff);
+            staffForm.ShowDialog();
+            if (staffForm.DialogResult.HasValue && staffForm.DialogResult.Value)
+            {
+                staff.Name = staffForm.Staff.Name;
+                staff.Qualifications = staffForm.Staff.Qualifications;
+                lstStaff.Items.Add(staff.ToString());
+            }
+            lstRecepie.Items.Clear();
+            foreach (var item in recepieManager.ToStringList())
+            {
+                lstRecepie.Items.Add(item);
+            }
         }
     }
 }

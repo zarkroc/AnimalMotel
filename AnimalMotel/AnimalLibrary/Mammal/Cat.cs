@@ -72,7 +72,9 @@ namespace AnimalMotel
         /// </summary>
         public override void CreateFoodSchedule()
         {
-            foodSchedule.AddFoodScheduleItem(Name + " likes to eat mice");
+            foodSchedule.AddFoodScheduleItem("Morning water and cat food \n" +
+                "Lunch dry food \n"+
+                "Dinner cat food" );
         }
 
         /// <summary>

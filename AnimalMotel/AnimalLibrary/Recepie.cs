@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AnimalMotel
+﻿namespace AnimalMotel
 {
-    class Recepie 
+    public class Recepie 
     {
         public string Name { get; set; }
         internal ListManager<string> Ingredients { get; set; }
@@ -18,7 +12,7 @@ namespace AnimalMotel
 
         public override string ToString()
         {
-            string output ="";
+            string output = Name + ": ";
             for (var i=0; i < Ingredients.Count; i++)
             {
                 output += Ingredients.GetAt(i) + " ";

@@ -14,7 +14,12 @@
         <Button x:Name="btnAdd" Content="Add ingredients" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Width="116" Click="BtnAdd_Click"/>
         <Button x:Name="btnChangeIngredient" Content="Change Ingredient" HorizontalAlignment="Left" Margin="10,110,0,0" VerticalAlignment="Top" Width="116" Click="BtnChange_Click"/>
         <Button x:Name="btnDeleteIngredient" Content="Delete Ingredient" HorizontalAlignment="Left" Margin="10,137,0,0" VerticalAlignment="Top" Width="116" Click="BtnDeleteIngredient_Click"/>
-        <ListBox x:Name="lstRecepie" HorizontalAlignment="Left" Height="141" Margin="142,72,0,0" VerticalAlignment="Top" Width="190"/>
+        <ListBox x:Name="lstRecepie" HorizontalAlignment="Left" Height="141" Margin="142,72,0,0" VerticalAlignment="Top" Width="190">
+            <ListBox.Resources>
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey }" Color="{x:Static SystemColors.HighlightColor}" />
+                <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey }" Color="{x:Static SystemColors.HighlightTextColor}" />
+            </ListBox.Resources>
+        </ListBox>
         <Button x:Name="btnOk" Content="OK" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top" Width="116" Click="BtnOk_Click" IsDefault="True"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="10,191,0,0" VerticalAlignment="Top" Width="116" IsCancel="True" Click="BtnCancel_Click"/>
 

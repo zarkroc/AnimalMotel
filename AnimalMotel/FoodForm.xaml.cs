@@ -1,16 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AnimalMotel
 {
@@ -19,14 +8,19 @@ namespace AnimalMotel
     /// </summary>
     public partial class FoodForm : Window
     {
-        Recepie recepie;
-
-        internal Recepie Recepie { get => recepie; }
+        
+        public Recepie Recepie { get; set; }
 
         public FoodForm()
         {
             InitializeComponent();
-            recepie = new Recepie();
+            Recepie = new Recepie();
+        }
+
+        public FoodForm(Recepie recepie)
+        {
+            InitializeComponent();
+            Recepie = recepie;
         }
 
         private void TxtRecepie_TextChanged(object sender, TextChangedEventArgs e)
@@ -40,17 +34,18 @@ namespace AnimalMotel
             if (index > -1)
             {
                 var ingredient = txtIngredients.Text;
-                recepie.Ingredients.ChangeAt(ingredient, index);
+                Recepie.Ingredients.ChangeAt(ingredient, index);
+                UpdateGui();
             }
             else
             {
-                MessageBox.Show("No recepie was selected");
+                MessageBox.Show("No ingredient was selected");
             }
         }
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            recepie.Ingredients.Add(txtIngredients.Text);
+            Recepie.Ingredients.Add(txtIngredients.Text);
             UpdateGui();
         }
 
@@ -59,28 +54,29 @@ namespace AnimalMotel
             var index = lstRecepie.SelectedIndex;
             if (index > -1)
             {
-                recepie.Ingredients.DeleteAt(index);
+                Recepie.Ingredients.DeleteAt(index);
+                UpdateGui();
             }
             else
             {
-                MessageBox.Show("No recepie was selected");
+                MessageBox.Show("No ingredient was selected");
             }
-            UpdateGui();
         }
         private void UpdateGui()
         {
             lstRecepie.Items.Clear();
             txtIngredients.Text = "";
-            for (int i=0; i < recepie.Ingredients.Count; i++)
+
+            foreach (var item in Recepie.Ingredients.ToStringList())
             {
-                lstRecepie.Items.Add(recepie.Ingredients.GetAt(i));
+                lstRecepie.Items.Add(item);
             }
         }
 
         private void BtnOk_Click(object sender, RoutedEventArgs e)
         {
+            Recepie.Name = txtRecepieName.Text;
             DialogResult = true;
-
             this.Close();
         }
 

@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="StaffForm" Height="300" Width="300">
     <Grid>
-        
+        <Label x:Name="lblName" Content="Name" HorizontalAlignment="Left" Margin="10,7,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="94,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188"/>
+        <Label x:Name="lblQualification" Content="Qualification" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtQualification" HorizontalAlignment="Left" Height="23" Margin="94,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188"/>
+        <ListBox x:Name="lstQualifications" HorizontalAlignment="Left" Height="148" Margin="94,112,0,0" VerticalAlignment="Top" Width="188"/>
+        <Button x:Name="btnAdd" Content="Add" HorizontalAlignment="Left" Margin="10,112,0,0" VerticalAlignment="Top" Width="75" Click="BtnAdd_Click"/>
+        <Button x:Name="btnChange" Content="Change" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="75" Click="BtnChange_Click"/>
+        <Button x:Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top" Width="75" Click="BtnDelete_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Click="BtnCancel_Click"/>
+        <Button x:Name="btnOk" Content="OK" HorizontalAlignment="Left" Margin="10,211,0,0" VerticalAlignment="Top" Width="75" IsDefault="True" Click="BtnOk_Click"/>
+
     </Grid>
 </Window>
