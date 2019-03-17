@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 /// <summary>
 /// Author: Tomas Perers ai2891
-/// Date: 2018-04-16
+/// Date: 2019-03-11
 /// /// Project Animal motel v3
 /// </summary>
 namespace AnimalMotel
@@ -12,11 +12,19 @@ namespace AnimalMotel
 
         public int Count => m_list.Count;
 
+        /// <summary>
+        /// Constructro creates a new list
+        /// </summary>
         public ListManager()
         {
             m_list = new List<T>();
         }
 
+        /// <summary>
+        /// Add an object to the list
+        /// </summary>
+        /// <param name="aType"></param>
+        /// <returns></returns>
         public bool Add(T aType)
         {
             if (m_list == null)
@@ -30,11 +38,20 @@ namespace AnimalMotel
             }
         }
 
+        /// <summary>
+        /// Reset the list
+        /// </summary>
         public void Reset()
         {
             m_list = new List<T>();
         }
 
+        /// <summary>
+        /// Change object at index.
+        /// </summary>
+        /// <param name="aType"></param>
+        /// <param name="anIndex"></param>
+        /// <returns></returns>
         public bool ChangeAt(T aType, int anIndex)
         {
             if (CheckIndex(anIndex))
@@ -56,6 +73,11 @@ namespace AnimalMotel
                 return false;
         }
 
+        /// <summary>
+        /// Check that the index is valid for the list
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public bool CheckIndex(int index)
         {
             if (index > -1 && index < Count)
@@ -64,11 +86,19 @@ namespace AnimalMotel
                 return false;
         }
 
+        /// <summary>
+        /// Delete everything in the list
+        /// </summary>
         public void DeleteAll()
         {
             m_list.Clear();
         }
 
+        /// <summary>
+        /// Remove the object at specefied index
+        /// </summary>
+        /// <param name="anIndex"></param>
+        /// <returns></returns>
         public bool DeleteAt(int anIndex)
         {
             if (CheckIndex(anIndex))
@@ -80,6 +110,11 @@ namespace AnimalMotel
                 return false;
         }
 
+        /// <summary>
+        /// Return the object at the index
+        /// </summary>
+        /// <param name="anIndex"></param>
+        /// <returns></returns>
         public T GetAt(int anIndex)
         {
             if (CheckIndex(anIndex))
@@ -88,6 +123,10 @@ namespace AnimalMotel
                 return default(T);
         }
 
+        /// <summary>
+        /// Convert list to a stringarray
+        /// </summary>
+        /// <returns></returns>
         public string[] ToStringArray()
         {
             string[] output = new string[Count];
@@ -100,6 +139,10 @@ namespace AnimalMotel
             return output;
         }
 
+        /// <summary>
+        /// Convert the list to a list of strings.
+        /// </summary>
+        /// <returns></returns>
         public List<string> ToStringList()
         {
             List<string> output = new List<string>();

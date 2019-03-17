@@ -2,7 +2,7 @@
 
 /// <summary>
 /// Author: Tomas Perers ai2891
-/// Date: 2018-04-16
+/// Date: 2019-03-10
 /// Project Animal motel v1
 /// An interface for a ListManager
 /// </summary>

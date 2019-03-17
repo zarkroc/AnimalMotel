@@ -4,7 +4,6 @@ using System.Linq;
 /// <summary>
 /// Author: Tomas Perers, ai2891
 /// Date : 2019-02-06
-/// Updated a bit for the second attempt at the course.
 /// Project Animal motel v1
 /// </summary>
 
@@ -19,7 +18,10 @@ namespace AnimalMotel
         {
        
         }
-
+        /// <summary>
+        /// Add an animal
+        /// </summary>
+        /// <param name="animal"></param>
         public void AddAnimal(Animal animal)
         {
             int id = CreateNewID();
@@ -27,10 +29,12 @@ namespace AnimalMotel
             base.Add(animal);
         }
 
+        /// <summary>
+        /// Creates a new ID for the animal
+        /// </summary>
+        /// <returns></returns>
         private int CreateNewID()
         {
-
-
             if (Count > 0)
             {
                 

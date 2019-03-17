@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 /// <summary>
-/// Created 2018-04-10
+/// Created 2019-03-10
 /// Author: Tomas Perers
 /// Food schedule used by animals.
 /// </summary>

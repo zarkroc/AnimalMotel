@@ -1,9 +1,6 @@
 ﻿/// <summary>
 /// Author: Tomas Perers, ai2891
 /// Date : 2019-02-06
-/// Updated a bit for the second attempt at the course.
-/// Project Animal motel v1
-/// Updated 2018-04-10
 /// </summary>
 namespace AnimalMotel
 {

@@ -2,7 +2,7 @@
 /// Interface for animals.
 /// This needs to be implemted by all animals.
 /// Author: Tomas Perers
-/// Date: 2018-04-10
+/// Date: 2019-03-10
 /// </summary>
 namespace AnimalMotel
 {

@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AnimalMotel"
         mc:Ignorable="d"
-        Title="Animal Motel" Height="536.814" Width="1327.37">
+        Title="Animal Motel" Height="543.042" Width="1331.107">
     <Grid>
         <GroupBox x:Name="grpSpecification" Header="GroupBox" HorizontalAlignment="Left" Height="145" Margin="177,293,0,0" VerticalAlignment="Top" Width="385">
             <Grid HorizontalAlignment="Left" Height="94" Margin="0,0,-2,-12" VerticalAlignment="Top" Width="322"/>
@@ -40,7 +40,7 @@
         <Image x:Name="picAnimalImage" HorizontalAlignment="Left" Height="139" Margin="522,76,0,0" VerticalAlignment="Top" Width="169"/>
         <CheckBox x:Name="chbListAllAnimals" Content="List all animals" HorizontalAlignment="Left" Margin="522,220,0,0" VerticalAlignment="Top" Width="134" Checked="ChbListAllAnimals_Checked" Unchecked="ChbListAllAnimals_Unchecked"/>
         <Label x:Name="lblGender" Content="Gender" HorizontalAlignment="Left" Margin="320,247,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="btnRemove" Content="Remove item" Margin="901,477,296,2" Click="btnRemove_Click" Width="122" Height="28"/>
+        
         <Label x:Name="lblCategory" Content="Category" HorizontalAlignment="Left" Margin="239,247,0,0" VerticalAlignment="Top"/>
         <GroupBox x:Name="grpSpecification_Copy" Header="GroupBox" HorizontalAlignment="Left" Height="109" Margin="10,126,0,0" VerticalAlignment="Top" Width="315">
             <Grid HorizontalAlignment="Left" Height="89" Margin="0,0,-2,-2" VerticalAlignment="Top" Width="305">
@@ -62,7 +62,8 @@
                 <TextBlock x:Name="txtbEaterType" HorizontalAlignment="Left" Margin="101,10,0,0" TextWrapping="Wrap" Text="eater type" VerticalAlignment="Top" Width="186" Grid.Column="1" Grid.ColumnSpan="2"/>
             </Grid>
         </GroupBox>
-        <Button x:Name="btnChange" Content="Change" HorizontalAlignment="Left" Margin="798,477,0,0" VerticalAlignment="Top" Width="74" Click="BtnChange_Click" Height="28"/>
+        <Button x:Name="btnChange" Content="Change" HorizontalAlignment="Left" Margin="808,479,0,0" VerticalAlignment="Top" Width="74" Click="BtnChange_Click" Height="28"/>
+        <Button x:Name="btnRemove" Content="Remove Animal" HorizontalAlignment="Left" Margin="664,479,0,0" VerticalAlignment="Top" Click="btnRemove_Click" Width="122" Height="28"/>
         <Button x:Name="btnAddFood" Content="Add Food" HorizontalAlignment="Left" Margin="1233,126,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.5,0.5" Click="BtnAddFood_Click"/>
         <Button x:Name="btnAddStaff" Content="Add Staff" HorizontalAlignment="Left" Margin="1233,249,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.473,-0.523" Click="BtnAddStaff_Click"/>
         <ListBox x:Name="lstRecepie" HorizontalAlignment="Left" Height="107" Margin="1014,14,0,0" VerticalAlignment="Top" Width="295">
