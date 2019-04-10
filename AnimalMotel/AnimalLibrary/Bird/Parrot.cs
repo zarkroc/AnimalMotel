@@ -1,9 +1,11 @@
-﻿/// <summary>
+﻿using System;
+/// <summary>
 /// Author: Tomas Perers, ai2891
 /// Date : 2019-02-06
 /// </summary>
 namespace AnimalMotel
 {
+    [Serializable]
     public class Parrot : Bird
     {
         private EaterType eaterType = EaterType.Herbivore;

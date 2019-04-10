@@ -1,4 +1,5 @@
-﻿/// <summary>
+﻿using System;
+/// <summary>
 /// Author: Tomas Perers, ai2891
 /// Date : 2019-02-06
 /// Updated a bit for the second attempt at the course.
@@ -6,6 +7,7 @@
 /// </summary>
 namespace AnimalMotel
 {
+    [Serializable]
     public class Falcon : Bird
     {
         private EaterType eaterType = EaterType.Carnivore;

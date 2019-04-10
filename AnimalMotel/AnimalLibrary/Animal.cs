@@ -1,11 +1,14 @@
-﻿/// <summary>
+﻿using System;
+using System.Runtime.Serialization;
+/// <summary>
 /// Author: Tomas Perers, ai2891
 /// Date : 2019-02-06
 /// Project Animal motel v1
 /// </summary>
 namespace AnimalMotel
 {
-    public abstract class Animal : IAnimal
+    [Serializable]
+    public abstract class Animal
     {
         private string name;
         private int id;

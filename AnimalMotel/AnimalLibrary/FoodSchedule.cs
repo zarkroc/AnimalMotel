@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 /// <summary>
 /// Created 2019-03-10
 /// Author: Tomas Perers
@@ -6,6 +7,7 @@
 /// </summary>
 namespace AnimalMotel
 {
+    [Serializable]
     public class FoodSchedule
     {
         private List<string> foodDescriptionList;

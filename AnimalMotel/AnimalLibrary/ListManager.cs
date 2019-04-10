@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 /// <summary>
 /// Author: Tomas Perers ai2891
 /// Date: 2019-03-11
@@ -6,6 +7,7 @@
 /// </summary>
 namespace AnimalMotel
 {
+    [Serializable]
     class ListManager<T> : IListManager<T>
     {
         private List<T> m_list;
@@ -151,6 +153,21 @@ namespace AnimalMotel
                 output.Add(aType.ToString());
             }
             return output;
+        }
+
+        public bool BinarySerialize(string fileName)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool BinaryDeSerialize(string fileName)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public bool XMLSerialize(string fileName)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

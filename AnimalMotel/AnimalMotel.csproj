@@ -71,6 +71,8 @@
     <Compile Include="StaffForm.xaml.cs">
       <DependentUpon>StaffForm.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AnimalLibrary\BinSerializerUtility.cs" />
+    <Compile Include="AnimalLibrary\XMLSerializerUtility.cs" />
     <Page Include="FoodForm.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -133,5 +135,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

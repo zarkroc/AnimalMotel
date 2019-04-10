@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 /// <summary>
@@ -9,6 +10,7 @@ using System.Linq;
 
 namespace AnimalMotel
 {
+    [Serializable]
     class AnimalManager : ListManager<Animal>
     {
         /// <summary>

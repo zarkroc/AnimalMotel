@@ -10,12 +10,12 @@
         <GroupBox x:Name="grpSpecification" Header="GroupBox" HorizontalAlignment="Left" Height="145" Margin="177,293,0,0" VerticalAlignment="Top" Width="385">
             <Grid HorizontalAlignment="Left" Height="94" Margin="0,0,-2,-12" VerticalAlignment="Top" Width="322"/>
         </GroupBox>
-        <Label x:Name="lblInputName" Content="Name" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="68,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="lblInputAge" Content="Age" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtAge" HorizontalAlignment="Left" Height="23" Margin="68,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Label x:Name="lblInputGender" Content="Gender" HorizontalAlignment="Left" Margin="10,76,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="cboxGender" HorizontalAlignment="Left" Margin="68,80,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblInputName" Content="Name" HorizontalAlignment="Left" Margin="10,34,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Height="23" Margin="68,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblInputAge" Content="Age" HorizontalAlignment="Left" Margin="10,68,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtAge" HorizontalAlignment="Left" Height="23" Margin="68,68,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="lblInputGender" Content="Gender" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="cboxGender" HorizontalAlignment="Left" Margin="68,104,0,0" VerticalAlignment="Top" Width="120"/>
         <ListBox x:Name="lstCategory" HorizontalAlignment="Left" Height="100" Margin="219,26,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="lstCategory_SelectionChanged">
             <ListBox.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey }" Color="{x:Static SystemColors.HighlightColor}" />
@@ -40,9 +40,9 @@
         <Image x:Name="picAnimalImage" HorizontalAlignment="Left" Height="139" Margin="522,76,0,0" VerticalAlignment="Top" Width="169"/>
         <CheckBox x:Name="chbListAllAnimals" Content="List all animals" HorizontalAlignment="Left" Margin="522,220,0,0" VerticalAlignment="Top" Width="134" Checked="ChbListAllAnimals_Checked" Unchecked="ChbListAllAnimals_Unchecked"/>
         <Label x:Name="lblGender" Content="Gender" HorizontalAlignment="Left" Margin="320,247,0,0" VerticalAlignment="Top"/>
-        
+
         <Label x:Name="lblCategory" Content="Category" HorizontalAlignment="Left" Margin="239,247,0,0" VerticalAlignment="Top"/>
-        <GroupBox x:Name="grpSpecification_Copy" Header="GroupBox" HorizontalAlignment="Left" Height="109" Margin="10,126,0,0" VerticalAlignment="Top" Width="315">
+        <GroupBox x:Name="grpSpecification_Copy" Header="GroupBox" HorizontalAlignment="Left" Height="109" Margin="10,138,0,0" VerticalAlignment="Top" Width="315">
             <Grid HorizontalAlignment="Left" Height="89" Margin="0,0,-2,-2" VerticalAlignment="Top" Width="305">
                 <Label x:Name="lblCategorySpec" Content="Placeholder" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,0"/>
                 <Label x:Name="lblSpeciesSpec" Content="Placeholder" HorizontalAlignment="Left" Margin="0,41,0,0" VerticalAlignment="Top"/>
@@ -66,7 +66,7 @@
         <Button x:Name="btnRemove" Content="Remove Animal" HorizontalAlignment="Left" Margin="664,479,0,0" VerticalAlignment="Top" Click="btnRemove_Click" Width="122" Height="28"/>
         <Button x:Name="btnAddFood" Content="Add Food" HorizontalAlignment="Left" Margin="1233,126,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.5,0.5" Click="BtnAddFood_Click"/>
         <Button x:Name="btnAddStaff" Content="Add Staff" HorizontalAlignment="Left" Margin="1233,249,0,0" VerticalAlignment="Top" Width="76" RenderTransformOrigin="0.473,-0.523" Click="BtnAddStaff_Click"/>
-        <ListBox x:Name="lstRecepie" HorizontalAlignment="Left" Height="107" Margin="1014,14,0,0" VerticalAlignment="Top" Width="295">
+        <ListBox x:Name="lstRecepie" HorizontalAlignment="Left" Height="107" Margin="1010,14,0,0" VerticalAlignment="Top" Width="299">
             <ListBox.Resources>
                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightBrushKey }" Color="{x:Static SystemColors.HighlightColor}" />
                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey }" Color="{x:Static SystemColors.HighlightTextColor}" />
@@ -78,6 +78,34 @@
                 <SolidColorBrush x:Key="{x:Static SystemColors.InactiveSelectionHighlightTextBrushKey }" Color="{x:Static SystemColors.HighlightTextColor}" />
             </ListBox.Resources>
         </ListBox>
+        <Menu x:Name="menu" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="85">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Click="menuNew_Click"   InputGestureText="Ctrl+N"/>
+                <MenuItem Header="_Open">
+                    <MenuItem Header="_Text File" Click="menuOpenTextFile_Click"/>
+                    <MenuItem Header="_Binary File" Click="menuBinaryFile_Click" />
+                </MenuItem>
+
+                <MenuItem Header="_Save" Click="menuSave_Click"/>
+                <MenuItem Header="_Save As">
+                    <MenuItem Header="_Text File" Click="menuSaveTextFile_Click"/>
+                    <MenuItem Header="_Binary File" Click="menuSaveBinaryFile_Click" />
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="_XML">
+                    <MenuItem Header="_Import from XML file" Click="menuImportXML_Click"/>
+                    <MenuItem Header="_Export to XML file" Click="menuExportToXML_Click"/>
+                    </MenuItem>
+                <Separator />
+                <MenuItem Header="_Exit" Click="menuExit_Click"   InputGestureText="Alt+X"/>
+            </MenuItem>
+        </Menu>
 
     </Grid>
+    <Window.CommandBindings>
+        <CommandBinding Command="New" Executed="CommandBinding_New" />
+    </Window.CommandBindings>
+    <Window.InputBindings>
+        <KeyBinding Key="N" Modifiers="Control" Command="New"/>
+    </Window.InputBindings>
 </Window>

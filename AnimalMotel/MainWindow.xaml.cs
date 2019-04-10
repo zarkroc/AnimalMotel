@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
 /// <summary>
@@ -20,6 +21,8 @@ namespace AnimalMotel
 
         private AnimalManager animalManager;
         private RecepieManager recepieManager;
+        private bool hasBeenSaved = false;
+        private string fileName;
 
         /// <summary>
         /// Constructor that will clear and initialize the GUI.
@@ -514,6 +517,116 @@ namespace AnimalMotel
             foreach (var item in recepieManager.ToStringList())
             {
                 lstRecepie.Items.Add(item);
+            }
+        }
+
+        private void CreateNewAnimalMotel()
+        {
+            if (hasBeenSaved)
+            {
+                animalManager = new AnimalManager();
+                recepieManager = new RecepieManager();
+                InitializeGUI();
+            }
+            else
+            {
+                MessageBox.Show("You need to save your work first");
+            }
+        }
+        
+        private bool SaveWork()
+        {
+            
+            var saveFileDialog = new SaveFileDialog();
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var result = saveFileDialog.ShowDialog();
+            if (result == false)
+            {
+                return false;
+            }
+            this.fileName = saveFileDialog.FileName;
+            if (BinSerializerUtility.Serialize(animalManager, this.fileName))
+            {
+                hasBeenSaved = true;
+                MessageBox.Show("Save is done");
+                return true;
+            }
+            return false;
+        }
+
+        private void menuNew_Click(object sender, RoutedEventArgs e)
+        {
+            CreateNewAnimalMotel();
+        }
+
+
+        private void CommandBinding_New(object sender, ExecutedRoutedEventArgs e)
+        {
+            CreateNewAnimalMotel();
+        }
+
+        private void menuSave_Click(object sender, RoutedEventArgs e)
+        {
+            SaveWork();
+        }
+
+        private void menuOpenTextFile_Click(object sender, RoutedEventArgs e)
+        {
+
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var result = openFileDialog.ShowDialog();
+            if (result == false)
+            {
+                return;
+            }
+            this.fileName = openFileDialog.FileName;
+        }
+
+        private void menuBinaryFile_Click(object sender, RoutedEventArgs e)
+        {
+            var openFileDialog = new OpenFileDialog();
+            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var result = openFileDialog.ShowDialog();
+            if (result == false)
+            {
+                return;
+            }
+            this.fileName = openFileDialog.FileName;
+            animalManager = BinSerializerUtility.Deserialize<AnimalManager>(this.fileName);
+            UpdateGUI();
+        }
+
+        private void menuSaveTextFile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void menuSaveBinaryFile_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void menuImportXML_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void menuExportToXML_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void menuExit_Click(object sender, RoutedEventArgs e)
+        {
+            if (hasBeenSaved)
+            {
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("You need to save your work first");
+                SaveWork();
             }
         }
     }

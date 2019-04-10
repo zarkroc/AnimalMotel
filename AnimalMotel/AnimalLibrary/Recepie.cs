@@ -1,9 +1,11 @@
-﻿/// <summary>
+﻿using System;
+/// <summary>
 /// Author: Tomas Perers, ai2891
 /// Date : 2019-03-15
 /// </summary>
 namespace AnimalMotel
 {
+    [Serializable]
     public class Recepie 
     {
         public string Name { get; set; }
