@@ -208,6 +208,7 @@ namespace AnimalMotel
             txtSpeciesSpec.Visibility = Visibility.Hidden;
             grpSpecification.Header = "Animal specefications";
             grpSpecification.Visibility = Visibility.Hidden;
+            this.hasBeenSaved = false;
         }
 
         /// <summary>
@@ -489,6 +490,7 @@ namespace AnimalMotel
                 newRecepie.Name = food.Recepie.Name;
                 newRecepie.Ingredients = food.Recepie.Ingredients;
                 recepieManager.Add(newRecepie);
+                this.hasBeenSaved = false;
             }
             lstRecepie.Items.Clear();
             foreach (var item in recepieManager.ToStringList())
@@ -512,6 +514,7 @@ namespace AnimalMotel
                 staff.Name = staffForm.Staff.Name;
                 staff.Qualifications = staffForm.Staff.Qualifications;
                 lstStaff.Items.Add(staff.ToString());
+                this.hasBeenSaved = false;
             }
             lstRecepie.Items.Clear();
             foreach (var item in recepieManager.ToStringList())
@@ -542,12 +545,13 @@ namespace AnimalMotel
             var result = saveFileDialog.ShowDialog();
             if (result == false)
             {
+                this.hasBeenSaved = false;
                 return false;
             }
             this.fileName = saveFileDialog.FileName;
             if (BinSerializerUtility.Serialize(animalManager, this.fileName))
             {
-                hasBeenSaved = true;
+                this.hasBeenSaved = true;
                 MessageBox.Show("Save is done");
                 return true;
             }
@@ -556,7 +560,14 @@ namespace AnimalMotel
 
         private void menuNew_Click(object sender, RoutedEventArgs e)
         {
-            CreateNewAnimalMotel();
+            if (this.hasBeenSaved)
+            {
+                CreateNewAnimalMotel();
+            }
+            else
+            {
+                MessageBox.Show("You need to save the data first");
+            }
         }
 
 
