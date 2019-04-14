@@ -539,20 +539,9 @@ namespace AnimalMotel
         
         private bool SaveWork()
         {
-            
-            var saveFileDialog = new SaveFileDialog();
-            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            var result = saveFileDialog.ShowDialog();
-            if (result == false)
-            {
-                this.hasBeenSaved = false;
-                return false;
-            }
-            this.fileName = saveFileDialog.FileName;
             if (BinSerializerUtility.Serialize(animalManager, this.fileName))
             {
                 this.hasBeenSaved = true;
-                MessageBox.Show("Save is done");
                 return true;
             }
             return false;
@@ -578,6 +567,18 @@ namespace AnimalMotel
 
         private void menuSave_Click(object sender, RoutedEventArgs e)
         {
+            if (this.fileName == null)
+            {
+                var saveFileDialog = new SaveFileDialog();
+                saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                var result = saveFileDialog.ShowDialog();
+                if (result == false)
+                {
+                    this.hasBeenSaved = false;
+                    return;
+                }
+                this.fileName = saveFileDialog.FileName;
+            }
             SaveWork();
         }
 
