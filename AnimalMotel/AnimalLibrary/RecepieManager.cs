@@ -4,7 +4,7 @@
 /// </summary>
 namespace AnimalMotel
 {
-    class RecepieManager : ListManager<Recepie>
+    public class RecepieManager : ListManager<Recepie>
     {
         public RecepieManager()
         {

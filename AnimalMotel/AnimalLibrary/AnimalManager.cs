@@ -11,7 +11,7 @@ using System.Linq;
 namespace AnimalMotel
 {
     [Serializable]
-    class AnimalManager : ListManager<Animal>
+    public class AnimalManager : ListManager<Animal>
     {
         /// <summary>
         /// Constructor that creates a new list of animals.

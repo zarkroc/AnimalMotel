@@ -28,7 +28,7 @@ namespace AnimalMotel
             string output = Name + ": ";
             for (var i=0; i < Ingredients.Count; i++)
             {
-                output += Ingredients.GetAt(i) + " ";
+                output += Ingredients.GetAt(i) + ", ";
             }
             return output;
         }

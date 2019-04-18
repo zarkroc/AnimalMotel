@@ -19,28 +19,13 @@ namespace AnimalMotel
         /// <param name="fileName">File path including the name of the file to be serialized.</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public static bool Serialize(object objToSave, string fileName)
+        public static void Serialize(object objToSave, string fileName)
         {
-            FileStream fileObj = null;
-            try
+            using (FileStream fileObj = new FileStream(fileName, FileMode.Create))
             {
-                //Steps in serializing an object
-                fileObj = new FileStream(fileName, FileMode.Create);
                 BinaryFormatter binFormatter = new BinaryFormatter();
                 binFormatter.Serialize(fileObj, objToSave);
             }
-            catch (Exception ex) //no parameter - catch avoids exception throwing but no action is taken here 
-            {
-                Console.WriteLine("Error: " + ex);
-                return false;
-            }
-            finally
-            {
-                if (fileObj != null)
-                    fileObj.Close();
-
-            }
-            return true;
         }
 
         /// <summary>
@@ -67,10 +52,6 @@ namespace AnimalMotel
                 objFromFile.Seek(0, SeekOrigin.Begin);
                 BinaryFormatter binFormatter = new BinaryFormatter();
                 restoreObj = binFormatter.Deserialize(objFromFile);
-            }
-            catch (FileNotFoundException ex)
-            {
-                MessageBox.Show(ex.FileName + " -" + ex.Message);
             }
             finally
             {

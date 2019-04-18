@@ -21,7 +21,7 @@ namespace AnimalMotel
         /// must be Serializable.</param>
         /// <returns></returns>
         /// <remarks></remarks>
-        public static bool SerializeToFile<T>(string filePath, T objectToSave)
+        public static bool Serialize<T>(T objectToSave, string filePath)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(T));
             TextWriter writer = new StreamWriter(filePath);
@@ -29,17 +29,12 @@ namespace AnimalMotel
             {
                 serializer.Serialize(writer, objectToSave);
             }
-            catch
-            {
-                return false;
-            }
             finally
             {
                 if (writer != null)
 
                     writer.Close();
             }
-
             return true;
         }
 
@@ -51,7 +46,7 @@ namespace AnimalMotel
         /// <returns>The object containing data read from the xml file.</returns>
         /// <remarks>Object must not have changed its structure since it was serilized calling
         /// the above method.</remarks>
-        public static T DeserializeFromFile<T>(string fileName)
+        public static T Deserialize<T>(string fileName)
         {
             XmlSerializer serializer = new XmlSerializer(typeof(T));
             object restoredObj = null;

@@ -8,7 +8,6 @@ namespace AnimalMotel
     [Serializable]
     public class Staff
     {
-        private IListManager<string> m_qualifications;
 
         /// <summary>
         /// Create s new list of qualifications using ListManager
@@ -25,7 +24,7 @@ namespace AnimalMotel
         /// <summary>
         /// Get and set the list.
         /// </summary>
-        public IListManager<string> Qualifications { get => m_qualifications; set => m_qualifications = value; }
+        public IListManager<string> Qualifications { get; set; }
 
         /// <summary>
         /// Returns everyting as a string.

@@ -8,7 +8,7 @@ using System.Collections.Generic;
 namespace AnimalMotel
 {
     [Serializable]
-    class ListManager<T> : IListManager<T>
+    public class ListManager<T> : IListManager<T>
     {
         private List<T> m_list;
 
