@@ -10,16 +10,16 @@ namespace AnimalMotel
     [Serializable]
     public class ListManager<T> : IListManager<T>
     {
-        private List<T> m_list;
+        public int Count => List.Count;
 
-        public int Count => m_list.Count;
+        public List<T> List { get; set; }
 
         /// <summary>
         /// Constructro creates a new list
         /// </summary>
         public ListManager()
         {
-            m_list = new List<T>();
+            List = new List<T>();
         }
 
         /// <summary>
@@ -29,13 +29,13 @@ namespace AnimalMotel
         /// <returns></returns>
         public bool Add(T aType)
         {
-            if (m_list == null)
+            if (List == null)
                 return false;
             else if (aType == null)
                 return false;
             else
             {
-                m_list.Add(aType);
+                List.Add(aType);
                 return true;
             }
         }
@@ -45,7 +45,7 @@ namespace AnimalMotel
         /// </summary>
         public void Reset()
         {
-            m_list = new List<T>();
+            List = new List<T>();
         }
 
         /// <summary>
@@ -58,11 +58,11 @@ namespace AnimalMotel
         {
             if (CheckIndex(anIndex))
             {
-                if (m_list != null)
+                if (List != null)
                 {
                     if (aType != null)
                     {
-                        m_list[anIndex] = aType;
+                        List[anIndex] = aType;
                         return true;
                     }
                     else
@@ -93,7 +93,7 @@ namespace AnimalMotel
         /// </summary>
         public void DeleteAll()
         {
-            m_list.Clear();
+            List.Clear();
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace AnimalMotel
         {
             if (CheckIndex(anIndex))
             {
-                m_list.RemoveAt(anIndex);
+                List.RemoveAt(anIndex);
                 return true;
             }
             else
@@ -120,7 +120,7 @@ namespace AnimalMotel
         public T GetAt(int anIndex)
         {
             if (CheckIndex(anIndex))
-                return m_list[anIndex];
+                return List[anIndex];
             else
                 return default(T);
         }
@@ -133,7 +133,7 @@ namespace AnimalMotel
         {
             string[] output = new string[Count];
             int i = 0;
-            foreach (T aType in m_list)
+            foreach (T aType in List)
             {
                 output[i] = aType.ToString();
                 i++;
@@ -148,26 +148,31 @@ namespace AnimalMotel
         public List<string> ToStringList()
         {
             List<string> output = new List<string>();
-            foreach (T aType in m_list)
+            foreach (T aType in List)
             {
                 output.Add(aType.ToString());
             }
             return output;
         }
 
-        public bool BinarySerialize(string fileName)
+        public void BinarySerialize(string fileName)
         {
-            throw new System.NotImplementedException();
+            BinSerializerUtility.Serialize(List, fileName);
         }
 
-        public bool BinaryDeSerialize(string fileName)
+        public void BinaryDeSerialize(string fileName)
         {
-            throw new System.NotImplementedException();
+            List = BinSerializerUtility.Deserialize<List<T>>(fileName);
         }
 
-        public bool XMLSerialize(string fileName)
+        public void XMLSerialize(string fileName)
         {
-            throw new System.NotImplementedException();
+            XMLSerializerUtility.Serialize(List, fileName);
+        }
+
+        public void XMLDeSerialize(string fileName)
+        {
+            List = XMLSerializerUtility.Deserialize<List<T>>(fileName);
         }
     }
 }

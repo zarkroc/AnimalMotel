@@ -540,18 +540,6 @@ namespace AnimalMotel
         
         private bool SaveWork()
         {
-            if (this.saveFormat == null || this.saveFormat == "")
-            {
-                MessageBoxResult messageBoxResult = MessageBox.Show("Do you want to save in binary format?", "Format Confirmation", MessageBoxButton.YesNo);
-                if (messageBoxResult == MessageBoxResult.Yes)
-                {
-                    this.saveFormat = "binary";
-                }
-                else
-                {
-                    this.saveFormat = "text";
-                }
-            }
             var saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var result = saveFileDialog.ShowDialog();
@@ -561,37 +549,19 @@ namespace AnimalMotel
                 return false;
             }
             this.fileName = saveFileDialog.FileName;
-            if (this.saveFormat == "binary")
+            try
             {
-                try
-                {
-                    BinSerializerUtility.Serialize(animalManager, this.fileName);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Could not store the file, the error message was" + e);
-                    return false;
-                }
-                this.hasBeenSaved = true;
-                MessageBox.Show("Save has been done");
-                return true;
+                animalManager.BinarySerialize(this.fileName);
             }
-            else
+            catch (Exception e)
             {
-                try
-                {
-                    XMLSerializerUtility.Serialize(animalManager, this.fileName);
-                }
-                catch (Exception e)
-                {
-                    MessageBox.Show("Could not store the file, the error message was" + e);
-                    return false;
-                }
-                this.hasBeenSaved = true;
-                MessageBox.Show("Save has been done");
-                return true;
+                MessageBox.Show("Could not store the file, the error message was" + e);
+                return false;
             }
-        }
+            this.hasBeenSaved = true;
+            MessageBox.Show("Save has been done");
+            return true;
+         }
 
         private void menuNew_Click(object sender, RoutedEventArgs e)
         {
@@ -616,28 +586,7 @@ namespace AnimalMotel
             SaveWork();
         }
 
-        private void menuOpenTextFile_Click(object sender, RoutedEventArgs e)
-        {
-            var openFileDialog = new OpenFileDialog();
-            openFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-            var result = openFileDialog.ShowDialog();
-            if (result == false)
-            {
-                return;
-            }
-            this.fileName = openFileDialog.FileName;
-            try
-            {
-                animalManager = XMLSerializerUtility.Deserialize<AnimalManager>(this.fileName);
-                UpdateGUI();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Could not read the file error message: " + ex);
-            }
-            
-        }
-
+        
         private void menuBinaryFile_Click(object sender, RoutedEventArgs e)
         {
             var openFileDialog = new OpenFileDialog();
@@ -650,19 +599,13 @@ namespace AnimalMotel
             this.fileName = openFileDialog.FileName;
             try
             {
-                animalManager = BinSerializerUtility.Deserialize<AnimalManager>(this.fileName);
+                animalManager.BinaryDeSerialize(this.fileName);
                 UpdateGUI();
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Could not read the file error message: " + ex);
             }
-        }
-
-        private void menuSaveTextFile_Click(object sender, RoutedEventArgs e)
-        {
-            this.saveFormat = "text";
-            SaveWork();
         }
 
         private void menuSaveBinaryFile_Click(object sender, RoutedEventArgs e)
@@ -683,15 +626,7 @@ namespace AnimalMotel
             this.fileName = openFileDialog.FileName;
             try
             {
-                List<Recepie> recepies = XMLSerializerUtility.Deserialize<List<Recepie>>(this.fileName);
-                foreach (var item in recepies)
-                {
-                    Recepie newRecepie = new Recepie();
-                    newRecepie.Name = item.Name;
-                    Console.WriteLine(item);
-                    newRecepie.Ingredients = item.Ingredients;
-                    recepieManager.Add(newRecepie);
-                }
+                recepieManager.XMLDeSerialize(this.fileName);
                 lstRecepie.Items.Clear();
                 foreach (var item in recepieManager.ToStringList())
                 {
@@ -706,22 +641,13 @@ namespace AnimalMotel
 
         private void menuExportToXML_Click(object sender, RoutedEventArgs e)
         {
-
-            List<Recepie> recepies = new List<Recepie>();
-            for (var i= 0 ; i < recepieManager.Count; i++)
-            {
-                Recepie newRecepie = new Recepie();
-                newRecepie.Name = recepieManager.GetAt(i).Name;
-                newRecepie.Ingredients = recepieManager.GetAt(i).Ingredients;
-                recepies.Add(newRecepie);
-            }
             var saveFileDialog = new SaveFileDialog();
             saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             var result = saveFileDialog.ShowDialog();
             this.fileName = saveFileDialog.FileName;
             try
             {
-                XMLSerializerUtility.Serialize(recepies, this.fileName);
+                recepieManager.XMLSerialize(this.fileName);
             }
             catch (Exception ex)
             {

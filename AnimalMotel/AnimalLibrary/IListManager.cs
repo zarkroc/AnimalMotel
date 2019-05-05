@@ -22,9 +22,10 @@ namespace AnimalMotel
         /// <returns>True if sucessful</returns>
         bool Add(T aType);
 
-        bool BinarySerialize(string fileName);
-        bool BinaryDeSerialize(string fileName);
-        bool XMLSerialize(string fileName);
+        void BinarySerialize(string fileName);
+        void BinaryDeSerialize(string fileName);
+        void XMLSerialize(string fileName);
+        void XMLDeSerialize(string fileName);
 
         /// <summary>
         /// Change an object in the collection

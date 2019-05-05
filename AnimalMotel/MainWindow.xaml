@@ -82,13 +82,11 @@
             <MenuItem Header="_File">
                 <MenuItem Header="_New" Click="menuNew_Click"   InputGestureText="Ctrl+N"/>
                 <MenuItem Header="_Open">
-                    <MenuItem Header="_Text File" Click="menuOpenTextFile_Click"/>
                     <MenuItem Header="_Binary File" Click="menuBinaryFile_Click" />
                 </MenuItem>
 
                 <MenuItem Header="_Save" Click="menuSave_Click"/>
                 <MenuItem Header="_Save As">
-                    <MenuItem Header="_Text File" Click="menuSaveTextFile_Click"/>
                     <MenuItem Header="_Binary File" Click="menuSaveBinaryFile_Click" />
                 </MenuItem>
                 <Separator />

@@ -45,6 +45,6 @@ namespace AnimalMotel
             }
             else
                 return 100 + Count;
-        }          
+        }
     }
 }
